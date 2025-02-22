@@ -2,7 +2,65 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="container text-center">
-    <h1>Welcome to the Subdivision Website</h1>
-    <p>Manage your payments, reservations, and more.</p>
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>Welcome to Our Subdivision</h1>
+        <p>A premium residential community designed for modern living</p>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div class="hero-buttons">
+                <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg">Join Our Community</a>
+                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-light btn-lg">Sign In</a>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="features-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Premium Lots</h3>
+                    <p>Carefully planned residential lots in a secure and peaceful environment.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-swimming-pool"></i>
+                    <h3>Modern Amenities</h3>
+                    <p>Access to swimming pools, clubhouse, and other recreational facilities.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>24/7 Security</h3>
+                    <p>Round-the-clock security personnel and CCTV monitoring.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="announcements-section">
+    <div class="container">
+        <h2>Latest Announcements</h2>
+        <div class="announcement-cards">
+            <!-- Sample announcements - you can make these dynamic later -->
+            <div class="announcement-card">
+                <div class="announcement-date">May 15, 2024</div>
+                <h4>Community Meeting</h4>
+                <p>Annual homeowners' meeting scheduled for next month.</p>
+                <a href="#" class="btn btn-link">Read More →</a>
+            </div>
+            <div class="announcement-card">
+                <div class="announcement-date">May 10, 2024</div>
+                <h4>Pool Maintenance</h4>
+                <p>Regular pool maintenance scheduled for this weekend.</p>
+                <a href="#" class="btn btn-link">Read More →</a>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,0 +1,117 @@
+@model SubdivisionWebsite.ViewModels.UserProfileViewModel
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h2>My Profile</h2>
+                    <p>Manage your account information</p>
+                </div>
+
+                @if (TempData["StatusMessage"] != null)
+                {
+                    <div class="alert alert-success">
+                        @TempData["StatusMessage"]
+                    </div>
+                }
+
+                <form asp-action="Profile" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="profile-picture-section text-center mb-4">
+                        @if (!string.IsNullOrEmpty(Model.ExistingProfilePicture))
+                        {
+                            <img src="data:image/jpeg;base64,@Model.ExistingProfilePicture" 
+                                 class="profile-picture" alt="Profile Picture" />
+                        }
+                        else
+                        {
+                            <div class="profile-picture-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        }
+                        <div class="mt-2">
+                            <label asp-for="ProfilePicture" class="btn btn-outline-primary">
+                                <i class="fas fa-camera"></i> Change Picture
+                                <input asp-for="ProfilePicture" type="file" class="d-none" />
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="FirstName"></label>
+                                <input asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="validation-message"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="LastName"></label>
+                                <input asp-for="LastName" class="form-control" />
+                                <span asp-validation-for="LastName" class="validation-message"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="validation-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Address"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="validation-message"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="LotNumber"></label>
+                                <input asp-for="LotNumber" class="form-control" />
+                                <span asp-validation-for="LotNumber" class="validation-message"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="BlockNumber"></label>
+                                <input asp-for="BlockNumber" class="form-control" />
+                                <span asp-validation-for="BlockNumber" class="validation-message"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block w-100">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            $("#ProfilePicture").change(function() {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('.profile-picture').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        });
+    </script>
+} 
