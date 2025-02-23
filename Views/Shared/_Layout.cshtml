@@ -35,7 +35,7 @@
                         </li>
                     </ul>
                     <div class="navbar-nav">
-                        @if (User.Identity.IsAuthenticated)
+                        @if (!(User.Identity?.IsAuthenticated ?? false))
                         {
                             <div class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 

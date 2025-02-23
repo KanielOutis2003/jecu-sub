@@ -39,8 +39,10 @@ namespace SubdivisionWebsite.Controllers
                     Address = model.Address,
                     LotNumber = model.LotNumber,
                     BlockNumber = model.BlockNumber,
-                    UserType = UserType.Homeowner // Default to Homeowner
+                    UserType = UserType.Homeowner, // Default to Homeowner
+                    ProfilePicture = "default-profile.png" // Assign a default profile picture
                 };
+
 
                 var result = await _userManager.CreateAsync(user, model.Password);
 

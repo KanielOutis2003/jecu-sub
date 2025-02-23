@@ -6,7 +6,7 @@
     <div class="hero-content">
         <h1>Welcome to Our Subdivision</h1>
         <p>A premium residential community designed for modern living</p>
-        @if (!User.Identity.IsAuthenticated)
+        @if (!(User.Identity?.IsAuthenticated ?? false))
         {
             <div class="hero-buttons">
                 <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg">Join Our Community</a>

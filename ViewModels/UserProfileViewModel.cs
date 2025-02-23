@@ -8,34 +8,36 @@ namespace SubdivisionWebsite.ViewModels
     {
         [Required]
         [Display(Name = "First Name")]
-        public string FirstName { get; set; }
+        public required string FirstName { get; set; }
 
         [Required]
         [Display(Name = "Last Name")]
-        public string LastName { get; set; }
+        public required string LastName { get; set; }
 
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public virtual string? Email { get; set; }
+
 
         [Required]
-        public string Address { get; set; }
+        public required string Address { get; set; }
 
         [Required]
         [Display(Name = "Lot Number")]
-        public string LotNumber { get; set; }
+        public required string LotNumber { get; set; }
 
         [Required]
         [Display(Name = "Block Number")]
-        public string BlockNumber { get; set; }
+        public required string BlockNumber { get; set; }
 
         [Display(Name = "Profile Picture")]
-        public IFormFile ProfilePicture { get; set; }
+        public IFormFile? ProfilePicture { get; set; } // Nullable because it's optional
 
-        public string ExistingProfilePicture { get; set; }
+        public string? ExistingProfilePicture { get; set; } // Nullable since the user might not have one yet
 
         [Phone]
         [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
+
     }
-} 
+}
