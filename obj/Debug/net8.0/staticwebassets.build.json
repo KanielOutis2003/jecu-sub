@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "W1JQ9DSrq4vdkMMpq0zNXlkWcwJW5lA8AP5/1gXT6ds=",
+  "Hash": "y+oh3rAuXJtXkDIV/UGlHycl1sCjS+vM/gLIZPV0t7g=",
   "Source": "SubdivisionWebsite",
   "BasePath": "_content/SubdivisionWebsite",
   "Mode": "Default",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "tbe8yp5vwf",
-      "Integrity": "iXCoV04rezFdYTMIezZxPbZQ3qDiNMAUKi6k2aKurgM=",
+      "Fingerprint": "nklqc1ois8",
+      "Integrity": "tx9H/AAEQTYpyown9/RpqrSZh4yb6Untq/uD0Kb4N30=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SubdivisionWebsite.styles.css"
@@ -52,8 +52,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "tbe8yp5vwf",
-      "Integrity": "iXCoV04rezFdYTMIezZxPbZQ3qDiNMAUKi6k2aKurgM=",
+      "Fingerprint": "nklqc1ois8",
+      "Integrity": "tx9H/AAEQTYpyown9/RpqrSZh4yb6Untq/uD0Kb4N30=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SubdivisionWebsite.bundle.scp.css"
@@ -6766,7 +6766,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1136"
+          "Value": "1149"
         },
         {
           "Name": "Content-Type",
@@ -6774,11 +6774,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"iXCoV04rezFdYTMIezZxPbZQ3qDiNMAUKi6k2aKurgM=\""
+          "Value": "\"tx9H/AAEQTYpyown9/RpqrSZh4yb6Untq/uD0Kb4N30=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Feb 2025 22:43:15 GMT"
+          "Value": "Sun, 23 Feb 2025 23:14:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6788,7 +6788,97 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-iXCoV04rezFdYTMIezZxPbZQ3qDiNMAUKi6k2aKurgM="
+          "Value": "sha256-tx9H/AAEQTYpyown9/RpqrSZh4yb6Untq/uD0Kb4N30="
+        }
+      ]
+    },
+    {
+      "Route": "SubdivisionWebsite.nklqc1ois8.bundle.scp.css",
+      "AssetFile": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SubdivisionWebsite.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1149"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tx9H/AAEQTYpyown9/RpqrSZh4yb6Untq/uD0Kb4N30=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Feb 2025 23:14:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nklqc1ois8"
+        },
+        {
+          "Name": "label",
+          "Value": "SubdivisionWebsite.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tx9H/AAEQTYpyown9/RpqrSZh4yb6Untq/uD0Kb4N30="
+        }
+      ]
+    },
+    {
+      "Route": "SubdivisionWebsite.nklqc1ois8.styles.css",
+      "AssetFile": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SubdivisionWebsite.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1149"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tx9H/AAEQTYpyown9/RpqrSZh4yb6Untq/uD0Kb4N30=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Feb 2025 23:14:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nklqc1ois8"
+        },
+        {
+          "Name": "label",
+          "Value": "SubdivisionWebsite.styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tx9H/AAEQTYpyown9/RpqrSZh4yb6Untq/uD0Kb4N30="
         }
       ]
     },
@@ -6803,7 +6893,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1136"
+          "Value": "1149"
         },
         {
           "Name": "Content-Type",
@@ -6811,11 +6901,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"iXCoV04rezFdYTMIezZxPbZQ3qDiNMAUKi6k2aKurgM=\""
+          "Value": "\"tx9H/AAEQTYpyown9/RpqrSZh4yb6Untq/uD0Kb4N30=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Feb 2025 22:43:15 GMT"
+          "Value": "Sun, 23 Feb 2025 23:14:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6825,97 +6915,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-iXCoV04rezFdYTMIezZxPbZQ3qDiNMAUKi6k2aKurgM="
-        }
-      ]
-    },
-    {
-      "Route": "SubdivisionWebsite.tbe8yp5vwf.bundle.scp.css",
-      "AssetFile": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SubdivisionWebsite.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1136"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"iXCoV04rezFdYTMIezZxPbZQ3qDiNMAUKi6k2aKurgM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 23 Feb 2025 22:43:15 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "tbe8yp5vwf"
-        },
-        {
-          "Name": "label",
-          "Value": "SubdivisionWebsite.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-iXCoV04rezFdYTMIezZxPbZQ3qDiNMAUKi6k2aKurgM="
-        }
-      ]
-    },
-    {
-      "Route": "SubdivisionWebsite.tbe8yp5vwf.styles.css",
-      "AssetFile": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SubdivisionWebsite.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1136"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"iXCoV04rezFdYTMIezZxPbZQ3qDiNMAUKi6k2aKurgM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 23 Feb 2025 22:43:15 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "tbe8yp5vwf"
-        },
-        {
-          "Name": "label",
-          "Value": "SubdivisionWebsite.styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-iXCoV04rezFdYTMIezZxPbZQ3qDiNMAUKi6k2aKurgM="
+          "Value": "sha256-tx9H/AAEQTYpyown9/RpqrSZh4yb6Untq/uD0Kb4N30="
         }
       ]
     }

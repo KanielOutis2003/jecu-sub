@@ -40,9 +40,9 @@ button.accept-policy[b-uk6smahyq2] {
 }
 
 .footer[b-uk6smahyq2] {
-  position: absolute;
-  bottom: 0;
+  position: relative;
   width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  text-align: center;
 }
