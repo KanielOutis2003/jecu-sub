@@ -6,12 +6,14 @@ using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-    ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 // Add Identity services
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => {
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+{
     options.Password.RequireDigit = true;
     options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = true;
@@ -19,7 +21,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => {
     options.Password.RequiredLength = 8;
 })
 .AddEntityFrameworkStores<AppDbContext>()
-.AddDefaultTokenProviders();
+.AddDefaultTokenProviders()
+.AddSignInManager<SignInManager<ApplicationUser>>();  // ✅ Explicitly add SignInManager
 
 builder.Services.AddControllersWithViews();
 
