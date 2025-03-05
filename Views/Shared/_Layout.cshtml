@@ -14,7 +14,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" href="/">
                     <i class="fas fa-home"></i> Subdivision
@@ -22,8 +22,8 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -34,39 +34,30 @@
                             <a class="nav-link" asp-controller="Home" asp-action="Facilities">Facilities</a>
                         </li>
                     </ul>
-                    <div class="navbar-nav">
-                        @if (User?.Identity?.IsAuthenticated ?? false)
+                    <ul class="navbar-nav">
+                        @if (User?.Identity?.IsAuthenticated == true)
                         {
-                            <div class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-user-circle"></i> My Account
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">
-                                        <i class="fas fa-user"></i> Profile</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li>
-                                        <form asp-controller="Account" asp-action="Logout" method="post">
-                                            <button type="submit" class="dropdown-item">
-                                                <i class="fas fa-sign-out-alt"></i> Logout
-                                            </button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
+                            <li class="nav-item">
+                                <form class="form-inline" asp-controller="Account" asp-action="Logout">
+                                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                </form>
+                            </li>
                         }
                         else
                         {
-                            <a class="nav-link" asp-controller="Account" asp-action="Login">
-                                <i class="fas fa-sign-in-alt"></i> Login
-                            </a>
-                            <a class="nav-link" asp-controller="Account" asp-action="Register">
-                                <i class="fas fa-user-plus"></i> Register
-                            </a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" 
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Login As
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="loginDropdown">
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="AdminLogin">Admin</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="StaffLogin">Staff</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Login">Homeowner</a></li>
+                                </ul>
+                            </li>
                         }
-                    </div>
-
+                    </ul>
                 </div>
             </div>
         </nav>

@@ -237,13 +237,16 @@ namespace SubdivisionWebsite.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ProfilePicture")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("StaffRole")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("TwoFactorEnabled")

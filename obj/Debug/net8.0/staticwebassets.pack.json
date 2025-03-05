@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\account.css"
     },
     {
+      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
       "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\css\\home.css",
       "PackagePath": "staticwebassets\\css\\home.css"
     },
@@ -19,6 +23,14 @@
     {
       "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\img\\default-profile.png",
+      "PackagePath": "staticwebassets\\img\\default-profile.png"
+    },
+    {
+      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\js\\admin.js",
+      "PackagePath": "staticwebassets\\js\\admin.js"
     },
     {
       "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\js\\site.js",

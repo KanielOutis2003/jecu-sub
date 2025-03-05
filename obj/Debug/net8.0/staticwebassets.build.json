@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "y+oh3rAuXJtXkDIV/UGlHycl1sCjS+vM/gLIZPV0t7g=",
+  "Hash": "n8cgkKTjX72lIFi8tjdLpFSLYp4Jchg69AdUnbw82zk=",
   "Source": "SubdivisionWebsite",
   "BasePath": "_content/SubdivisionWebsite",
   "Mode": "Default",
@@ -80,6 +80,27 @@
       "OriginalItemSpec": "wwwroot\\css\\account.css"
     },
     {
+      "Identity": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\css\\admin.css",
+      "SourceId": "SubdivisionWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\",
+      "BasePath": "_content/SubdivisionWebsite",
+      "RelativePath": "css/admin#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "iequbax5tx",
+      "Integrity": "1nu8nMmIYLGxx8nbqXKGs2QSu/P+6t4ruBJwrxZ8KBY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\admin.css"
+    },
+    {
       "Identity": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\css\\home.css",
       "SourceId": "SubdivisionWebsite",
       "SourceType": "Discovered",
@@ -141,6 +162,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\img\\default-profile.png",
+      "SourceId": "SubdivisionWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\",
+      "BasePath": "_content/SubdivisionWebsite",
+      "RelativePath": "img/default-profile#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "437us778sn",
+      "Integrity": "oPjOel1ZcOOHQbrpurcAjONmeYe48M8HqQLdmiX50Ms=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\default-profile.png"
+    },
+    {
+      "Identity": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\js\\admin.js",
+      "SourceId": "SubdivisionWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\",
+      "BasePath": "_content/SubdivisionWebsite",
+      "RelativePath": "js/admin#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3efnmmahox",
+      "Integrity": "q3uTeePr43YCo52VwqsaDl6UL+mPf/1SOP9v8fmPcGo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\admin.js"
     },
     {
       "Identity": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\js\\site.js",
@@ -1508,6 +1571,88 @@
       ]
     },
     {
+      "Route": "css/admin.css",
+      "AssetFile": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\css\\admin.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1443"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1nu8nMmIYLGxx8nbqXKGs2QSu/P+6t4ruBJwrxZ8KBY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Mar 2025 07:24:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1nu8nMmIYLGxx8nbqXKGs2QSu/P+6t4ruBJwrxZ8KBY="
+        }
+      ]
+    },
+    {
+      "Route": "css/admin.iequbax5tx.css",
+      "AssetFile": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\css\\admin.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1443"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1nu8nMmIYLGxx8nbqXKGs2QSu/P+6t4ruBJwrxZ8KBY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Mar 2025 07:24:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "iequbax5tx"
+        },
+        {
+          "Name": "label",
+          "Value": "css/admin.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1nu8nMmIYLGxx8nbqXKGs2QSu/P+6t4ruBJwrxZ8KBY="
+        }
+      ]
+    },
+    {
       "Route": "css/home.47tn41wkob.css",
       "AssetFile": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\css\\home.css",
       "Selectors": [],
@@ -1750,6 +1895,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "img/default-profile.437us778sn.png",
+      "AssetFile": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\img\\default-profile.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17531"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oPjOel1ZcOOHQbrpurcAjONmeYe48M8HqQLdmiX50Ms=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Feb 2025 01:35:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "437us778sn"
+        },
+        {
+          "Name": "label",
+          "Value": "img/default-profile.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oPjOel1ZcOOHQbrpurcAjONmeYe48M8HqQLdmiX50Ms="
+        }
+      ]
+    },
+    {
+      "Route": "img/default-profile.png",
+      "AssetFile": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\img\\default-profile.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17531"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oPjOel1ZcOOHQbrpurcAjONmeYe48M8HqQLdmiX50Ms=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Feb 2025 01:35:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oPjOel1ZcOOHQbrpurcAjONmeYe48M8HqQLdmiX50Ms="
+        }
+      ]
+    },
+    {
+      "Route": "js/admin.3efnmmahox.js",
+      "AssetFile": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\js\\admin.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "145"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"q3uTeePr43YCo52VwqsaDl6UL+mPf/1SOP9v8fmPcGo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Mar 2025 07:24:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3efnmmahox"
+        },
+        {
+          "Name": "label",
+          "Value": "js/admin.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-q3uTeePr43YCo52VwqsaDl6UL+mPf/1SOP9v8fmPcGo="
+        }
+      ]
+    },
+    {
+      "Route": "js/admin.js",
+      "AssetFile": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\js\\admin.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "145"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"q3uTeePr43YCo52VwqsaDl6UL+mPf/1SOP9v8fmPcGo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Mar 2025 07:24:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-q3uTeePr43YCo52VwqsaDl6UL+mPf/1SOP9v8fmPcGo="
         }
       ]
     },
@@ -6778,7 +7087,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Feb 2025 23:14:57 GMT"
+          "Value": "Wed, 05 Mar 2025 16:57:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6815,7 +7124,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Feb 2025 23:14:57 GMT"
+          "Value": "Wed, 05 Mar 2025 16:57:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6860,7 +7169,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Feb 2025 23:14:57 GMT"
+          "Value": "Wed, 05 Mar 2025 16:57:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6905,7 +7214,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Feb 2025 23:14:57 GMT"
+          "Value": "Wed, 05 Mar 2025 16:57:47 GMT"
         },
         {
           "Name": "Cache-Control",

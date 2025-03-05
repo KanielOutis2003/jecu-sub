@@ -1,23 +1,38 @@
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace SubdivisionWebsite.Models
 {
-    public class ApplicationUser : IdentityUser
-    {
-        public required string FirstName { get; set; }
-        public required string LastName { get; set; }
-        public required string Address { get; set; }
-        public required string LotNumber { get; set; }
-        public required string BlockNumber { get; set; }
-        public UserType UserType { get; set; }
-        public DateTime RegistrationDate { get; set; } = DateTime.UtcNow;
-        public required string ProfilePicture { get; set; }
-    }
-
     public enum UserType
     {
-        Homeowner,
-        Administrator,
-        Staff
+        Admin,
+        Staff,
+        Homeowner
+    }
+
+    public class ApplicationUser : IdentityUser
+    {
+        [Required]
+        public required string FirstName { get; set; }
+
+        [Required]
+        public required string LastName { get; set; }
+
+        [Required]
+        public required string Address { get; set; }
+
+        [Required]
+        public required string LotNumber { get; set; }
+
+        [Required]
+        public required string BlockNumber { get; set; }
+
+        public string? ProfilePicture { get; set; } = "default.png";
+
+        public UserType UserType { get; set; }
+
+        public DateTime RegistrationDate { get; set; } = DateTime.UtcNow;
+
+        public string? StaffRole { get; set; }
     }
 }

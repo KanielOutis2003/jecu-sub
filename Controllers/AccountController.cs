@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using SubdivisionWebsite.Models;
 using SubdivisionWebsite.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace SubdivisionWebsite.Controllers
 {
@@ -10,13 +11,16 @@ namespace SubdivisionWebsite.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ILogger<AccountController> _logger;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -39,15 +43,16 @@ namespace SubdivisionWebsite.Controllers
                     Address = model.Address,
                     LotNumber = model.LotNumber,
                     BlockNumber = model.BlockNumber,
-                    UserType = UserType.Homeowner, // Default to Homeowner
-                    ProfilePicture = "default-profile.png" // Assign a default profile picture
+                    UserType = UserType.Homeowner,
+                    ProfilePicture = "default-profile.png"
                 };
-
 
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
+                    // Add user to Homeowner role
+                    await _userManager.AddToRoleAsync(user, "Homeowner");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -72,15 +77,48 @@ namespace SubdivisionWebsite.Controllers
         {
             if (ModelState.IsValid)
             {
+                _logger.LogInformation($"Attempting login for user: {model.Email}");
+
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+                    _logger.LogInformation($"User found. UserType: {user.UserType}");
+                }
+
                 var result = await _signInManager.PasswordSignInAsync(
-                    model.Email, model.Password, model.RememberMe, false);
+                    model.Email,
+                    model.Password,
+                    model.RememberMe,
+                    lockoutOnFailure: false);
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    _logger.LogInformation($"User {model.Email} logged in successfully");
+                    
+                    // Check user type and redirect accordingly
+                    if (user != null && user.UserType == UserType.Admin)
+                    {
+                        return RedirectToAction("Dashboard", "Admin");
+                    }
+                    else if (user != null && user.UserType == UserType.Staff)
+                    {
+                        return RedirectToAction("Dashboard", "Staff");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
-
-                ModelState.AddModelError("", "Invalid login attempt.");
+                
+                if (result.IsLockedOut)
+                {
+                    _logger.LogWarning($"User {model.Email} account locked out");
+                    ModelState.AddModelError(string.Empty, "Account locked out. Please try again later.");
+                    return View(model);
+                }
+                
+                _logger.LogWarning($"Invalid login attempt for user: {model.Email}");
+                ModelState.AddModelError(string.Empty, "Invalid login attempt. Please check your email and password.");
             }
 
             return View(model);
@@ -154,6 +192,76 @@ namespace SubdivisionWebsite.Controllers
                 {
                     ModelState.AddModelError("", error.Description);
                 }
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult AdminLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AdminLogin(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(
+                    model.Email, model.Password, model.RememberMe, false);
+
+                if (result.Succeeded)
+                {
+                    // Check if the user is an admin
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+                    if (user != null && await _userManager.IsInRoleAsync(user, "Admin"))
+                    {
+                        return RedirectToAction("Dashboard", "Admin");
+                    }
+                    
+                    // If not an admin, sign them out and show error
+                    await _signInManager.SignOutAsync();
+                    ModelState.AddModelError("", "You are not authorized as an admin.");
+                    return View(model);
+                }
+
+                ModelState.AddModelError("", "Invalid login attempt.");
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult StaffLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> StaffLogin(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(
+                    model.Email, model.Password, model.RememberMe, false);
+
+                if (result.Succeeded)
+                {
+                    // Check if the user is a staff member
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+                    if (user != null && await _userManager.IsInRoleAsync(user, "Staff"))
+                    {
+                        return RedirectToAction("Dashboard", "Staff");
+                    }
+                    
+                    // If not a staff member, sign them out and show error
+                    await _signInManager.SignOutAsync();
+                    ModelState.AddModelError("", "You are not authorized as staff.");
+                    return View(model);
+                }
+
+                ModelState.AddModelError("", "Invalid login attempt.");
             }
 
             return View(model);

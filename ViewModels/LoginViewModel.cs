@@ -10,7 +10,7 @@ namespace SubdivisionWebsite.ViewModels
 
         [Required]
         [DataType(DataType.Password)]
-        public required  string Password { get; set; }
+        public required string Password { get; set; }
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
