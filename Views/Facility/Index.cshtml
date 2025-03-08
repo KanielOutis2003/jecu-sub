@@ -1,0 +1,120 @@
+@model IEnumerable<SubdivisionWebsite.Models.Facility>
+
+@{
+    ViewData["Title"] = "Facilities";
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-4 fw-bold text-primary mb-0">@ViewData["Title"]</h1>
+            <p class="lead text-muted">Explore and reserve our community amenities</p>
+        </div>
+        @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+        {
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Add New Facility
+            </a>
+        }
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        @if (!Model.Any())
+        {
+            <div class="col-md-12">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> No facilities available at the moment.
+                    @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                    {
+                        <span>Use the "Add New Facility" button to create one.</span>
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card facility-card h-100 shadow-sm">
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <img src="@item.ImageUrl" class="card-img-top" alt="@item.Name">
+                        }
+                        else
+                        {
+                            <img src="/images/facilities/default-facility.jpg" class="card-img-top" alt="@item.Name">
+                        }
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title mb-0 fw-bold">@item.Name</h5>
+                                @if (item.IsActive)
+                                {
+                                    <span class="badge bg-success">Available</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Unavailable</span>
+                                }
+                            </div>
+                            <p class="card-text text-muted mb-3">@(item.Description.Length > 100 ? item.Description.Substring(0, 100) + "..." : item.Description)</p>
+                            <div class="d-flex flex-column gap-2 text-muted small mb-3">
+                                <div>
+                                    <i class="fas fa-map-marker-alt me-2"></i> @item.Location
+                                </div>
+                                <div>
+                                    <i class="fas fa-clock me-2"></i> @item.OpeningTime.ToString("hh\\:mm") - @item.ClosingTime.ToString("hh\\:mm")
+                                </div>
+                                <div>
+                                    <i class="fas fa-users me-2"></i> Capacity: @item.Capacity people
+                                </div>
+                                @if (item.ReservationFee.HasValue && item.ReservationFee.Value > 0)
+                                {
+                                    <div>
+                                        <i class="fas fa-dollar-sign me-2"></i> Fee: @item.ReservationFee.Value.ToString("C")
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div>
+                                        <i class="fas fa-dollar-sign me-2"></i> Free
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <div class="d-flex justify-content-between">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                                <a asp-action="Reserve" asp-route-id="@item.Id" class="btn btn-sm btn-success">
+                                    <i class="fas fa-calendar-plus"></i> Reserve
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Add animation to facility cards
+            $('.facility-card').each(function(i) {
+                $(this).css('animation-delay', (i * 0.1) + 's');
+                $(this).addClass('animate__animated animate__fadeInUp');
+            });
+        });
+    </script>
+} 

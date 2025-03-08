@@ -9,101 +9,177 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SubdivisionWebsite
 build_property.RootNamespace = SubdivisionWebsite
-build_property.ProjectDir = C:\Users\JUN DEL\OneDrive\Desktop\Jecu-Subdivision\
+build_property.ProjectDir = C:\Users\jecu2\Desktop\SUB\jecu-sub\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\JUN DEL\OneDrive\Desktop\Jecu-Subdivision
+build_property.MSBuildProjectDirectory = C:\Users\jecu2\Desktop\SUB\jecu-sub
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Account/AdminLogin.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Account/AdminLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZG1pbkxvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Account/Login.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Account/Profile.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Account/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Account/Register.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Account/StaffLogin.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Account/StaffLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTdGFmZkxvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Admin/Announcements.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/Announcements.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQW5ub3VuY2VtZW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Admin/CreateAnnouncement.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/CreateAnnouncement.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlQW5ub3VuY2VtZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Admin/Dashboard.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Admin/EditStaff.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/EditStaff.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFN0YWZmLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Admin/RegisterStaff.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/HomeownersList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSG9tZW93bmVyc0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/RegisterStaff.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVnaXN0ZXJTdGFmZi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Admin/StaffList.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/StaffList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3RhZmZMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Home/Index.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Document/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdW1lbnRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Document/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdW1lbnRcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Document/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdW1lbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Event/Calendar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcQ2FsZW5kYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Event/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Event/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Event/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Facility/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Facility/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Facility/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Facility/ManageReservations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlcTWFuYWdlUmVzZXJ2YXRpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Facility/MyReservations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlcTXlSZXNlcnZhdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Facility/Reserve.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlcUmVzZXJ2ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Home/Announcements.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBbm5vdW5jZW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Home/Privacy.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Shared/Error.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Notification/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2F0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Shared/Profile.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Shared/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Shared/_AdminLayout.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Shared/_StaffLayout.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Shared/_StaffLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdGFmZkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Staff/Dashboard.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Staff/Announcements.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcQW5ub3VuY2VtZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Staff/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/_ViewImports.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Staff/Facilities.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcRmFjaWxpdGllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Staff/HomeownersList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcSG9tZW93bmVyc0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/_ViewStart.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/JUN DEL/OneDrive/Desktop/Jecu-Subdivision/Views/Shared/_Layout.cshtml]
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-uk6smahyq2

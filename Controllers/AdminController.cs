@@ -35,14 +35,35 @@ namespace SubdivisionWebsite.Controllers
                 ViewBag.AnnouncementsCount = 0;
             }
             
-            ViewBag.FacilitiesCount = 0;
+            try {
+                ViewBag.FacilitiesCount = 0;
+                if (_context.Model.FindEntityType(typeof(Facility)) != null) {
+                    ViewBag.FacilitiesCount = await _context.Set<Facility>().CountAsync();
+                }
+            }
+            catch {
+                ViewBag.FacilitiesCount = 0;
+            }
+            
+            try {
+                ViewBag.PendingReservationsCount = 0;
+                if (_context.Model.FindEntityType(typeof(FacilityReservation)) != null) {
+                    ViewBag.PendingReservationsCount = await _context.Set<FacilityReservation>()
+                        .Where(r => r.Status == ReservationStatus.Pending)
+                        .CountAsync();
+                }
+            }
+            catch {
+                ViewBag.PendingReservationsCount = 0;
+            }
             
             return View();
         }
 
-        public IActionResult HomeownersList()
+        public async Task<IActionResult> HomeownersList()
         {
-            return View();
+            var homeowners = await _userManager.GetUsersInRoleAsync("Homeowner");
+            return View(homeowners);
         }
 
         public async Task<IActionResult> StaffList()

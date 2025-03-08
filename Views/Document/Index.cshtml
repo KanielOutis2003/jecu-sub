@@ -1,0 +1,102 @@
+@model IEnumerable<SubdivisionWebsite.Models.Document>
+
+@{
+    ViewData["Title"] = "Documents";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>@ViewData["Title"]</h1>
+        @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+        {
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Upload New Document
+            </a>
+        }
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Filter Documents</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Index" method="get" class="row g-3">
+                        <div class="col-md-6">
+                            <label for="type" class="form-label">Document Type</label>
+                            <select name="type" id="type" class="form-select" asp-items="@(new SelectList(ViewBag.DocumentTypes, "Value", "Text", ViewBag.SelectedType))">
+                                <option value="">All Types</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-filter"></i> Filter
+                            </button>
+                            <a asp-action="Index" class="btn btn-outline-secondary ms-2">
+                                <i class="fas fa-redo"></i> Reset
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        @if (!Model.Any())
+        {
+            <div class="col-md-12">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> No documents found. @(User.IsInRole("Admin") || User.IsInRole("Staff") ? "Upload a new document using the button above." : "")
+                </div>
+            </div>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h5 class="card-title mb-0">@item.Title</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@(string.IsNullOrEmpty(item.Description) ? "No description provided" : item.Description)</p>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-primary">@item.DocumentType</span>
+                                <small class="text-muted">Version @item.Version</small>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">
+                                    <i class="fas fa-file"></i> @item.FileType
+                                </small>
+                                <small class="text-muted">
+                                    <i class="fas fa-download"></i> @item.DownloadCount downloads
+                                </small>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-flex justify-content-between">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                                <a asp-action="Download" asp-route-id="@item.Id" class="btn btn-sm btn-success">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Add any JavaScript functionality here
+        });
+    </script>
+} 

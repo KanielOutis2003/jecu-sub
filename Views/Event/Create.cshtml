@@ -1,0 +1,117 @@
+@model SubdivisionWebsite.Models.Event
+
+@{
+    ViewData["Title"] = "Create Event";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-0 rounded-lg">
+                <div class="card-header bg-gradient-primary text-white text-center py-4">
+                    <h3 class="mb-0 fw-bold">Create New Event</h3>
+                    <p class="small mb-0">Schedule an event for the community</p>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        
+                        <div class="form-floating mb-3">
+                            <input asp-for="Title" class="form-control" placeholder="Enter event title" />
+                            <label asp-for="Title">Event Title</label>
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="Description" class="form-control" placeholder="Enter description" style="height: 100px"></textarea>
+                            <label asp-for="Description">Description</label>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="StartDate" class="form-control" type="date" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                                    <label asp-for="StartDate">Start Date</label>
+                                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="EndDate" class="form-control" type="date" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                                    <label asp-for="EndDate">End Date (Optional)</label>
+                                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" id="isAllDay" asp-for="IsAllDay" />
+                            <label class="form-check-label" asp-for="IsAllDay">All Day Event</label>
+                        </div>
+                        
+                        <div id="timeSection" class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="StartTime" class="form-control" type="time" value="09:00" />
+                                    <label asp-for="StartTime">Start Time</label>
+                                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="EndTime" class="form-control" type="time" value="10:00" />
+                                    <label asp-for="EndTime">End Time</label>
+                                    <span asp-validation-for="EndTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input asp-for="Location" class="form-control" placeholder="Enter location" />
+                            <label asp-for="Location">Location (Optional)</label>
+                            <span asp-validation-for="Location" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input asp-for="Color" class="form-control" type="color" value="#4e73df" />
+                            <label asp-for="Color">Event Color</label>
+                            <span asp-validation-for="Color" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary me-md-2">
+                                <i class="fas fa-arrow-left"></i> Back to List
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-calendar-plus"></i> Create Event
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        $(document).ready(function () {
+            // Toggle time inputs based on "All Day" checkbox
+            $("#isAllDay").change(function() {
+                if(this.checked) {
+                    $("#timeSection").hide();
+                } else {
+                    $("#timeSection").show();
+                }
+            });
+            
+            // Initialize based on current state
+            if($("#isAllDay").is(":checked")) {
+                $("#timeSection").hide();
+            }
+        });
+    </script>
+} 

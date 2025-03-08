@@ -1,0 +1,136 @@
+@{
+    ViewData["Title"] = "Event Calendar";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>@ViewData["Title"]</h1>
+        <div>
+            <a asp-action="Index" class="btn btn-outline-secondary me-2">
+                <i class="fas fa-list"></i> List View
+            </a>
+            @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+            {
+                <a asp-action="Create" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Create New Event
+                </a>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Event Details Modal -->
+<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="eventModalLabel">Event Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 id="eventTitle"></h4>
+                <p id="eventDescription"></p>
+                <div class="mb-3">
+                    <i class="fas fa-calendar"></i> <span id="eventDate"></span>
+                </div>
+                <div class="mb-3">
+                    <i class="fas fa-clock"></i> <span id="eventTime"></span>
+                </div>
+                <div class="mb-3" id="eventLocationContainer">
+                    <i class="fas fa-map-marker-alt"></i> <span id="eventLocation"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a id="eventDetailsLink" href="#" class="btn btn-primary">View Details</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+    <style>
+        #calendar {
+            height: 700px;
+        }
+        .fc-event {
+            cursor: pointer;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                },
+                events: {
+                    url: '@Url.Action("GetEvents")',
+                    method: 'GET',
+                    failure: function() {
+                        alert('There was an error while fetching events!');
+                    }
+                },
+                eventClick: function(info) {
+                    // Display event details in modal
+                    $('#eventTitle').text(info.event.title);
+                    $('#eventDescription').text(info.event.extendedProps.description || 'No description provided');
+                    
+                    // Format date
+                    var startDate = info.event.start;
+                    var endDate = info.event.end;
+                    var dateStr = startDate.toLocaleDateString();
+                    if (endDate && startDate.toDateString() !== endDate.toDateString()) {
+                        dateStr += ' - ' + endDate.toLocaleDateString();
+                    }
+                    $('#eventDate').text(dateStr);
+                    
+                    // Format time
+                    if (info.event.allDay) {
+                        $('#eventTime').text('All Day');
+                    } else {
+                        var timeStr = startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                        if (endDate) {
+                            timeStr += ' - ' + endDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                        }
+                        $('#eventTime').text(timeStr);
+                    }
+                    
+                    // Location
+                    if (info.event.extendedProps.location) {
+                        $('#eventLocation').text(info.event.extendedProps.location);
+                        $('#eventLocationContainer').show();
+                    } else {
+                        $('#eventLocationContainer').hide();
+                    }
+                    
+                    // Set details link
+                    $('#eventDetailsLink').attr('href', '@Url.Action("Details")/' + info.event.id);
+                    
+                    // Show modal
+                    var eventModal = new bootstrap.Modal(document.getElementById('eventModal'));
+                    eventModal.show();
+                }
+            });
+            calendar.render();
+        });
+    </script>
+} 

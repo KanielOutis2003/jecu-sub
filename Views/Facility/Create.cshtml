@@ -1,0 +1,127 @@
+@model SubdivisionWebsite.Models.Facility
+
+@{
+    ViewData["Title"] = "Create Facility";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-0 rounded-lg">
+                <div class="card-header bg-gradient-primary text-white text-center py-4">
+                    <h3 class="mb-0 fw-bold">Create New Facility</h3>
+                    <p class="small mb-0">Add a new facility to the subdivision</p>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Name" class="form-control" placeholder="Enter facility name" list="facilityTypesList" />
+                                    <label asp-for="Name">Facility Name</label>
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                    <datalist id="facilityTypesList">
+                                        @foreach (var type in ViewBag.FacilityTypes)
+                                        {
+                                            <option value="@type">@type</option>
+                                        }
+                                    </datalist>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Location" class="form-control" placeholder="Enter location" />
+                                    <label asp-for="Location">Location</label>
+                                    <span asp-validation-for="Location" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="Description" class="form-control" placeholder="Enter description" style="height: 100px"></textarea>
+                            <label asp-for="Description">Description</label>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Capacity" class="form-control" placeholder="Enter capacity" />
+                                    <label asp-for="Capacity">Capacity (people)</label>
+                                    <span asp-validation-for="Capacity" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="ReservationFee" class="form-control" placeholder="Enter fee" />
+                                    <label asp-for="ReservationFee">Reservation Fee ($)</label>
+                                    <span asp-validation-for="ReservationFee" class="text-danger"></span>
+                                    <small class="form-text text-muted">Leave blank if no fee is required</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="OpeningTime" class="form-control" type="time" value="08:00" />
+                                    <label asp-for="OpeningTime">Opening Time</label>
+                                    <span asp-validation-for="OpeningTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="ClosingTime" class="form-control" type="time" value="22:00" />
+                                    <label asp-for="ClosingTime">Closing Time</label>
+                                    <span asp-validation-for="ClosingTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="facilityImage" class="form-label">Facility Image</label>
+                            <input type="file" class="form-control" id="facilityImage" name="facilityImage" accept="image/*" />
+                            <small class="form-text text-muted">Upload an image of the facility (optional)</small>
+                        </div>
+                        
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" asp-for="IsActive" checked />
+                            <label class="form-check-label" asp-for="IsActive">Active (available for reservation)</label>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary me-md-2">
+                                <i class="fas fa-arrow-left"></i> Back to List
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Create
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        $(document).ready(function () {
+            // Preview image before upload
+            $("#facilityImage").change(function () {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#imagePreview').attr('src', e.target.result);
+                        $('#imagePreviewContainer').show();
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        });
+    </script>
+} 

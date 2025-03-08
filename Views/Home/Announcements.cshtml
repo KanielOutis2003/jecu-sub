@@ -1,0 +1,62 @@
+@model List<SubdivisionWebsite.Models.Announcement>
+@{
+    ViewData["Title"] = "Announcements";
+}
+
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4 mb-3">Announcements</h1>
+            <p class="lead">Stay updated with the latest news and information from our community.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        @if (Model.Any())
+        {
+            foreach (var announcement in Model)
+            {
+                bool isRead = ViewBag.ReadAnnouncements != null && ViewBag.ReadAnnouncements.Contains(announcement.Id);
+                <div class="col-md-12 mb-4">
+                    <div class="card announcement-card @(isRead ? "" : "unread")">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">
+                                @if (!isRead)
+                                {
+                                    <span class="badge bg-primary me-2">New</span>
+                                }
+                                @announcement.Title
+                            </h5>
+                            <small class="text-muted">
+                                Posted on @announcement.CreatedAt.ToString("MMM dd, yyyy") by 
+                                @(announcement.CreatedBy != null ? $"{announcement.CreatedBy.FirstName} {announcement.CreatedBy.LastName}" : "Unknown")
+                            </small>
+                        </div>
+                        <div class="card-body">
+                            <div class="announcement-content">
+                                @Html.Raw(announcement.Content)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i> There are no announcements at this time.
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Mark announcements as read when viewed
+            $.post('/Home/MarkAnnouncementsAsRead', { __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val() });
+        });
+    </script>
+} 

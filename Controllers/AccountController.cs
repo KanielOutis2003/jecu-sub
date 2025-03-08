@@ -96,11 +96,11 @@ namespace SubdivisionWebsite.Controllers
                     _logger.LogInformation($"User {model.Email} logged in successfully");
                     
                     // Check user type and redirect accordingly
-                    if (user != null && user.UserType == UserType.Admin)
+                    if (user != null && await _userManager.IsInRoleAsync(user, "Admin"))
                     {
                         return RedirectToAction("Dashboard", "Admin");
                     }
-                    else if (user != null && user.UserType == UserType.Staff)
+                    else if (user != null && await _userManager.IsInRoleAsync(user, "Staff"))
                     {
                         return RedirectToAction("Dashboard", "Staff");
                     }

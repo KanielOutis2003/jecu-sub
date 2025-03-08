@@ -1,0 +1,64 @@
+@model IEnumerable<SubdivisionWebsite.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "Homeowners List";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">Homeowners List</h1>
+    
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">All Homeowners</h6>
+        </div>
+        <div class="card-body">
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> No homeowners found.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="homeownersTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Lot/Block</th>
+                                <th>Phone</th>
+                                <th>Registered</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var homeowner in Model)
+                            {
+                                <tr>
+                                    <td>@homeowner.FirstName @homeowner.LastName</td>
+                                    <td>@homeowner.Email</td>
+                                    <td>@homeowner.Address</td>
+                                    <td>Lot @homeowner.LotNumber, Block @homeowner.BlockNumber</td>
+                                    <td>@homeowner.PhoneNumber</td>
+                                    <td>@homeowner.RegistrationDate.ToString("MMM dd, yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#homeownersTable').DataTable({
+                "order": [[0, "asc"]]
+            });
+        });
+    </script>
+} 

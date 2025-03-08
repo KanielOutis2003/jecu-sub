@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using SubdivisionWebsite.Models;
 using Microsoft.AspNetCore.Hosting;
 using SubdivisionWebsite.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace SubdivisionWebsite.Controllers
 {
@@ -28,19 +29,27 @@ namespace SubdivisionWebsite.Controllers
             return View();
         }
 
-        public IActionResult HomeownersList()
+        public async Task<IActionResult> HomeownersList()
         {
-            return View();
+            var homeowners = await _userManager.GetUsersInRoleAsync("Homeowner");
+            return View(homeowners);
         }
 
-        public IActionResult Announcements()
+        public async Task<IActionResult> Announcements()
         {
-            return View();
+            var announcements = await _context.Announcements
+                .Include(a => a.CreatedBy)
+                .OrderByDescending(a => a.CreatedAt)
+                .ToListAsync();
+            return View(announcements);
         }
 
-        public IActionResult Facilities()
+        public async Task<IActionResult> Facilities()
         {
-            return View();
+            var facilities = await _context.Facilities
+                .OrderBy(f => f.Name)
+                .ToListAsync();
+            return View(facilities);
         }
 
         // Use new keyword to explicitly hide the base method and await the async call

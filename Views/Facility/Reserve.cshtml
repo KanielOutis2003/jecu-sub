@@ -1,0 +1,90 @@
+@model SubdivisionWebsite.Models.FacilityReservation
+
+@{
+    ViewData["Title"] = "Reserve Facility";
+    var facility = ViewBag.Facility as SubdivisionWebsite.Models.Facility;
+}
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Reserve @(facility?.Name ?? "Facility")</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Reserve" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="FacilityId" />
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ReservationDate" class="control-label">Date</label>
+                                    <input asp-for="ReservationDate" class="form-control" type="date" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                                    <span asp-validation-for="ReservationDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="StartTime" class="control-label">Start Time</label>
+                                    <input asp-for="StartTime" class="form-control" type="time" min="@(facility?.OpeningTime.ToString(@"hh\:mm") ?? "08:00")" max="@(facility?.ClosingTime.ToString(@"hh\:mm") ?? "22:00")" />
+                                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="EndTime" class="control-label">End Time</label>
+                                    <input asp-for="EndTime" class="form-control" type="time" min="@(facility?.OpeningTime.ToString(@"hh\:mm") ?? "08:00")" max="@(facility?.ClosingTime.ToString(@"hh\:mm") ?? "22:00")" />
+                                    <span asp-validation-for="EndTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Purpose" class="control-label">Purpose of Reservation</label>
+                            <textarea asp-for="Purpose" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Purpose" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="ExpectedAttendees" class="control-label">Expected Number of Attendees</label>
+                            <input asp-for="ExpectedAttendees" class="form-control" type="number" min="1" max="@(facility?.Capacity ?? 100)" />
+                            <span asp-validation-for="ExpectedAttendees" class="text-danger"></span>
+                            <small class="form-text text-muted">Maximum capacity: @(facility?.Capacity ?? 100) people</small>
+                        </div>
+
+                        @if (facility?.ReservationFee != null && facility.ReservationFee.Value > 0)
+                        {
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i> This facility has a reservation fee of @facility.ReservationFee.Value.ToString("C"). Payment details will be provided after your reservation is approved.
+                            </div>
+                        }
+
+                        <div class="form-group mt-4">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-calendar-check"></i> Submit Reservation
+                            </button>
+                            <a asp-action="Details" asp-route-id="@Model.FacilityId" class="btn btn-outline-secondary">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        $(document).ready(function () {
+            // Add date/time validation if needed
+        });
+    </script>
+} 

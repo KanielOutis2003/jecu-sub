@@ -1,0 +1,101 @@
+@model IEnumerable<SubdivisionWebsite.Models.Event>
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>@ViewData["Title"]</h1>
+        <div>
+            <a asp-action="Calendar" class="btn btn-info me-2">
+                <i class="fas fa-calendar-alt"></i> Calendar View
+            </a>
+            @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+            {
+                <a asp-action="Create" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Create New Event
+                </a>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        @if (!Model.Any())
+        {
+            <div class="col-md-12">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> No events found. @(User.IsInRole("Admin") || User.IsInRole("Staff") ? "Create a new event using the button above." : "")
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-12">
+                <div class="list-group">
+                    @foreach (var item in Model)
+                    {
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">@item.Title</h5>
+                                <small>
+                                    @if (item.StartDate.Date == DateTime.Today)
+                                    {
+                                        <span class="badge bg-danger">Today</span>
+                                    }
+                                    else if (item.StartDate.Date == DateTime.Today.AddDays(1))
+                                    {
+                                        <span class="badge bg-warning text-dark">Tomorrow</span>
+                                    }
+                                    else if (item.StartDate.Date < DateTime.Today)
+                                    {
+                                        <span class="badge bg-secondary">Past</span>
+                                    }
+                                    else if (item.StartDate.Date <= DateTime.Today.AddDays(7))
+                                    {
+                                        <span class="badge bg-success">This Week</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-primary">Upcoming</span>
+                                    }
+                                </small>
+                            </div>
+                            <p class="mb-1">@item.Description</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar"></i> @item.StartDate.ToString("MMM dd, yyyy")
+                                    @if (!item.IsAllDay)
+                                    {
+                                        <span><i class="fas fa-clock ms-2"></i> @item.StartTime.ToString(@"hh\:mm tt")</span>
+                                    }
+                                    else
+                                    {
+                                        <span><i class="fas fa-clock ms-2"></i> All Day</span>
+                                    }
+                                    @if (!string.IsNullOrEmpty(item.Location))
+                                    {
+                                        <span><i class="fas fa-map-marker-alt ms-2"></i> @item.Location</span>
+                                    }
+                                </small>
+                                <div>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-info-circle"></i> Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Add any JavaScript functionality here
+        });
+    </script>
+} 

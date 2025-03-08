@@ -1,0 +1,155 @@
+@model SubdivisionWebsite.Models.Event
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-header" style="background-color: @(string.IsNullOrEmpty(Model.Color) ? "#3788d8" : Model.Color); color: white;">
+                    <h4 class="mb-0">@Model.Title</h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <p class="lead">@Model.Description</p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5>Event Details</h5>
+                                <table class="table">
+                                    <tr>
+                                        <th><i class="fas fa-calendar"></i> Date</th>
+                                        <td>
+                                            @Model.StartDate.ToString("MMM dd, yyyy")
+                                            @if (Model.EndDate.HasValue && Model.EndDate.Value != Model.StartDate)
+                                            {
+                                                <span> - @Model.EndDate.Value.ToString("MMM dd, yyyy")</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="fas fa-clock"></i> Time</th>
+                                        <td>
+                                            @if (Model.IsAllDay)
+                                            {
+                                                <span>All Day</span>
+                                            }
+                                            else
+                                            {
+                                                <span>@Model.StartTime.ToString(@"hh\:mm tt")</span>
+                                                @if (Model.EndTime.HasValue)
+                                                {
+                                                    <span> - @Model.EndTime.Value.ToString(@"hh\:mm tt")</span>
+                                                }
+                                            }
+                                        </td>
+                                    </tr>
+                                    @if (!string.IsNullOrEmpty(Model.Location))
+                                    {
+                                        <tr>
+                                            <th><i class="fas fa-map-marker-alt"></i> Location</th>
+                                            <td>@Model.Location</td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <th><i class="fas fa-user"></i> Created By</th>
+                                        <td>@(Model.CreatedBy?.FirstName ?? "") @(Model.CreatedBy?.LastName ?? "")</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Attendance</h5>
+                                @if (User.Identity?.IsAuthenticated == true)
+                                {
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6>Your Response</h6>
+                                            @if (ViewBag.UserResponse.HasValue)
+                                            {
+                                                <p>
+                                                    You are @(ViewBag.UserResponse.Value ? "attending" : "not attending") this event.
+                                                </p>
+                                                <form asp-action="Respond" method="post" class="d-inline">
+                                                    <input type="hidden" name="id" value="@Model.Id" />
+                                                    <input type="hidden" name="isAttending" value="@(!ViewBag.UserResponse.Value)" />
+                                                    <button type="submit" class="btn btn-sm @(ViewBag.UserResponse.Value ? "btn-outline-danger" : "btn-outline-success")">
+                                                        @(ViewBag.UserResponse.Value ? "Cancel Attendance" : "Attend Event")
+                                                    </button>
+                                                </form>
+                                            }
+                                            else
+                                            {
+                                                <p>You haven't responded to this event yet.</p>
+                                                <div class="d-flex gap-2">
+                                                    <form asp-action="Respond" method="post" class="d-inline">
+                                                        <input type="hidden" name="id" value="@Model.Id" />
+                                                        <input type="hidden" name="isAttending" value="true" />
+                                                        <button type="submit" class="btn btn-sm btn-success">
+                                                            <i class="fas fa-check"></i> Attend
+                                                        </button>
+                                                    </form>
+                                                    <form asp-action="Respond" method="post" class="d-inline">
+                                                        <input type="hidden" name="id" value="@Model.Id" />
+                                                        <input type="hidden" name="isAttending" value="false" />
+                                                        <button type="submit" class="btn btn-sm btn-danger">
+                                                            <i class="fas fa-times"></i> Decline
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                                
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6>Attendees (@Model.Attendees.Count(a => a.IsAttending))</h6>
+                                        @if (!Model.Attendees.Any(a => a.IsAttending))
+                                        {
+                                            <p class="text-muted">No one has confirmed attendance yet.</p>
+                                        }
+                                        else
+                                        {
+                                            <ul class="list-group">
+                                                @foreach (var attendee in Model.Attendees.Where(a => a.IsAttending))
+                                                {
+                                                    <li class="list-group-item">
+                                                        @(attendee.User?.FirstName ?? "") @(attendee.User?.LastName ?? "")
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mt-4">
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left"></i> Back to List
+                        </a>
+                        <div>
+                            @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Add any JavaScript functionality here
+        });
+    </script>
+} 

@@ -1,280 +1,364 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SubdivisionWebsite.bundle.scp.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SubdivisionWebsite.bundle.scp.css",
       "PackagePath": "staticwebassets\\SubdivisionWebsite.nklqc1ois8.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\css\\account.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\css\\account.css",
       "PackagePath": "staticwebassets\\css\\account.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\css\\admin.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\css\\admin.css",
       "PackagePath": "staticwebassets\\css\\admin.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\css\\home.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\css\\home.css",
       "PackagePath": "staticwebassets\\css\\home.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\css\\site.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\img\\default-profile.png",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\default-profile.png",
+      "PackagePath": "staticwebassets\\images\\default-profile.png"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\facilities\\COMMUNITY CENTER.jpg",
+      "PackagePath": "staticwebassets\\images\\facilities\\COMMUNITY CENTER.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\facilities\\admin logo.jpg",
+      "PackagePath": "staticwebassets\\images\\facilities\\admin logo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\facilities\\default-court.jpg",
+      "PackagePath": "staticwebassets\\images\\facilities\\default-court.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\facilities\\default-facility.jpg",
+      "PackagePath": "staticwebassets\\images\\facilities\\default-facility.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\facilities\\default-gym.jpg",
+      "PackagePath": "staticwebassets\\images\\facilities\\default-gym.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\facilities\\default-hall.jpg",
+      "PackagePath": "staticwebassets\\images\\facilities\\default-hall.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\facilities\\default-park.jpg",
+      "PackagePath": "staticwebassets\\images\\facilities\\default-park.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\facilities\\default-playground.jpg",
+      "PackagePath": "staticwebassets\\images\\facilities\\default-playground.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\facilities\\default-pool.jpg",
+      "PackagePath": "staticwebassets\\images\\facilities\\default-pool.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\facilities\\default-trail.jpg",
+      "PackagePath": "staticwebassets\\images\\facilities\\default-trail.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\logo\\admin-logo.jpg",
+      "PackagePath": "staticwebassets\\images\\logo\\admin-logo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\logo\\admin-logo.png",
+      "PackagePath": "staticwebassets\\images\\logo\\admin-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\img\\default-profile.png",
       "PackagePath": "staticwebassets\\img\\default-profile.png"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\js\\admin.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\js\\admin.js",
       "PackagePath": "staticwebassets\\js\\admin.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
     },
     {
-      "Id": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\facilities\\638770821785681688_COMMUNITY CENTER.jpg",
+      "PackagePath": "staticwebassets\\uploads\\facilities\\638770821785681688_COMMUNITY CENTER.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\cfa7025f-84b8-4f4e-84f8-86fe917e192d_638770855224403147.HEIC",
+      "PackagePath": "staticwebassets\\uploads\\profiles\\cfa7025f-84b8-4f4e-84f8-86fe917e192d_638770855224403147.HEIC"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\cfa7025f-84b8-4f4e-84f8-86fe917e192d_638770869999660091.HEIC",
+      "PackagePath": "staticwebassets\\uploads\\profiles\\cfa7025f-84b8-4f4e-84f8-86fe917e192d_638770869999660091.HEIC"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\cfa7025f-84b8-4f4e-84f8-86fe917e192d_638770891263283371.HEIC",
+      "PackagePath": "staticwebassets\\uploads\\profiles\\cfa7025f-84b8-4f4e-84f8-86fe917e192d_638770891263283371.HEIC"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\cfa7025f-84b8-4f4e-84f8-86fe917e192d_638770891361336330.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profiles\\cfa7025f-84b8-4f4e-84f8-86fe917e192d_638770891361336330.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\eda439a4-50a2-4a93-b73b-40a651575ea1_638767644741016629.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profiles\\eda439a4-50a2-4a93-b73b-40a651575ea1_638767644741016629.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\f438b534-6619-4868-88b3-a273408f02ce_638770831189175686.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profiles\\f438b534-6619-4868-88b3-a273408f02ce_638770831189175686.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\f438b534-6619-4868-88b3-a273408f02ce_638770868031398348.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profiles\\f438b534-6619-4868-88b3-a273408f02ce_638770868031398348.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SubdivisionWebsite.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

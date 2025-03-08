@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\SubdivisionWebsite.csproj": {}
+    "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\SubdivisionWebsite.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\SubdivisionWebsite.csproj": {
+    "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\SubdivisionWebsite.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\SubdivisionWebsite.csproj",
+        "projectUniqueName": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\SubdivisionWebsite.csproj",
         "projectName": "SubdivisionWebsite",
-        "projectPath": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\SubdivisionWebsite.csproj",
-        "packagesPath": "C:\\Users\\JUN DEL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JUN DEL\\OneDrive\\Desktop\\Jecu-Subdivision\\obj\\",
+        "projectPath": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\SubdivisionWebsite.csproj",
+        "packagesPath": "C:\\Users\\jecu2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\JUN DEL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\jecu2\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

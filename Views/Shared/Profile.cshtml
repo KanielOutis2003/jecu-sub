@@ -5,7 +5,9 @@
     Layout = User.IsInRole("Admin") ? "_AdminLayout" : "_StaffLayout";
 }
 
-<div class="container-fluid">
+<div class="container-fluid py-4">
+    <h1 class="h3 mb-4 text-gray-800">My Profile</h1>
+    
     <div class="row">
         <div class="col-md-4">
             <div class="card shadow mb-4">
@@ -15,11 +17,11 @@
                 <div class="card-body text-center">
                     @if (!string.IsNullOrEmpty(Model.ExistingProfilePicture))
                     {
-                        <img src="@Model.ExistingProfilePicture" alt="Profile Picture" class="img-profile rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                        <img src="@Model.ExistingProfilePicture" alt="Profile Picture" class="img-profile rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover; border: 3px solid #E7717D;">
                     }
                     else
                     {
-                        <img src="/img/default-profile.png" alt="Default Profile" class="img-profile rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                        <img src="/images/default-profile.png" alt="Default Profile" class="img-profile rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover; border: 3px solid #E7717D;">
                     }
                     <h4>@Model.FirstName @Model.LastName</h4>
                     <p class="text-muted">
@@ -37,7 +39,7 @@
                     @if (TempData["SuccessMessage"] != null)
                     {
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            @TempData["SuccessMessage"]
+                            <i class="fas fa-check-circle me-2"></i> @TempData["SuccessMessage"]
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     }
@@ -51,14 +53,14 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="FirstName" class="control-label"></label>
+                                    <label asp-for="FirstName" class="form-label"></label>
                                     <input asp-for="FirstName" class="form-control" />
                                     <span asp-validation-for="FirstName" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="LastName" class="control-label"></label>
+                                    <label asp-for="LastName" class="form-label"></label>
                                     <input asp-for="LastName" class="form-control" />
                                     <span asp-validation-for="LastName" class="text-danger"></span>
                                 </div>
@@ -66,32 +68,34 @@
                         </div>
                         
                         <div class="form-group mb-3">
-                            <label asp-for="Email" class="control-label"></label>
+                            <label asp-for="Email" class="form-label"></label>
                             <input asp-for="Email" class="form-control" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         
                         <div class="form-group mb-3">
-                            <label asp-for="Address" class="control-label"></label>
+                            <label asp-for="Address" class="form-label"></label>
                             <input asp-for="Address" class="form-control" />
                             <span asp-validation-for="Address" class="text-danger"></span>
                         </div>
                         
                         <div class="form-group mb-3">
-                            <label asp-for="PhoneNumber" class="control-label"></label>
+                            <label asp-for="PhoneNumber" class="form-label"></label>
                             <input asp-for="PhoneNumber" class="form-control" />
                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
                         
                         <div class="form-group mb-3">
-                            <label asp-for="ProfilePicture" class="control-label"></label>
+                            <label asp-for="ProfilePicture" class="form-label"></label>
                             <input asp-for="ProfilePicture" type="file" class="form-control" accept="image/*" />
                             <span asp-validation-for="ProfilePicture" class="text-danger"></span>
-                            <small class="form-text text-muted">Upload a new profile picture (optional).</small>
+                            <small class="form-text text-muted">Upload a new profile picture (optional). Supported formats: JPG, PNG, GIF.</small>
                         </div>
                         
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i> Save Changes
+                            </button>
                         </div>
                     </form>
                 </div>

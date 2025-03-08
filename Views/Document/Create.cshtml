@@ -1,0 +1,89 @@
+@model SubdivisionWebsite.Models.Document
+
+@{
+    ViewData["Title"] = "Upload Document";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-0 rounded-lg">
+                <div class="card-header bg-gradient-primary text-white text-center py-4">
+                    <h3 class="mb-0 fw-bold">Upload New Document</h3>
+                    <p class="small mb-0">Share important files with the community</p>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Title" class="form-control" placeholder="Enter document title" />
+                                    <label asp-for="Title">Document Title</label>
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Document Type</label>
+                                    <select asp-for="DocumentType" class="form-select" asp-items="@(new SelectList(ViewBag.DocumentTypes, "Value", "Text"))">
+                                    </select>
+                                    <span asp-validation-for="DocumentType" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="Description" class="form-control" placeholder="Enter description" style="height: 100px"></textarea>
+                            <label asp-for="Description">Description (Optional)</label>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="documentFile" class="form-label">Document File</label>
+                            <input type="file" class="form-control" id="documentFile" name="documentFile" />
+                            <div class="form-text">Upload PDF, Word, Excel, or other document files (Max 10MB)</div>
+                            <span class="text-danger field-validation-valid" data-valmsg-for="documentFile" data-valmsg-replace="true"></span>
+                        </div>
+                        
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" asp-for="IsPublic" checked />
+                            <label class="form-check-label" asp-for="IsPublic">Public (visible to all users)</label>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary me-md-2">
+                                <i class="fas fa-arrow-left"></i> Back to List
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-upload"></i> Upload Document
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        $(document).ready(function () {
+            // Preview file name when selected
+            $("#documentFile").change(function () {
+                if (this.files && this.files[0]) {
+                    var fileName = this.files[0].name;
+                    var fileSize = this.files[0].size / 1024 / 1024; // in MB
+                    
+                    if (fileSize > 10) {
+                        alert("File size exceeds 10MB limit. Please choose a smaller file.");
+                        $(this).val('');
+                    }
+                }
+            });
+        });
+    </script>
+} 

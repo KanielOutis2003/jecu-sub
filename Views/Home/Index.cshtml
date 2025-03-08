@@ -16,8 +16,12 @@
     </div>
 </div>
 
-<div class="features-section">
+<div class="features-section section">
     <div class="container">
+        <div class="section-header">
+            <h2>Our Features</h2>
+            <p>Discover what makes our subdivision special</p>
+        </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="feature-card">
@@ -44,22 +48,44 @@
     </div>
 </div>
 
-<div class="announcements-section">
+<div class="announcements-section section">
     <div class="container">
-        <h2>Latest Announcements</h2>
+        <div class="section-header">
+            <h2>Latest Announcements</h2>
+            <p>Stay updated with community news and events</p>
+        </div>
         <div class="announcement-cards">
             <!-- Sample announcements - you can make these dynamic later -->
             <div class="announcement-card">
-                <div class="announcement-date">May 15, 2024</div>
+                <div class="announcement-date"><i class="far fa-calendar-alt"></i> May 15, 2024</div>
                 <h4>Community Meeting</h4>
                 <p>Annual homeowners' meeting scheduled for next month.</p>
-                <a href="#" class="btn btn-link">Read More →</a>
+                <a href="#" class="btn btn-link">Read More <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="announcement-card">
-                <div class="announcement-date">May 10, 2024</div>
+                <div class="announcement-date"><i class="far fa-calendar-alt"></i> May 10, 2024</div>
                 <h4>Pool Maintenance</h4>
                 <p>Regular pool maintenance scheduled for this weekend.</p>
-                <a href="#" class="btn btn-link">Read More →</a>
+                <a href="#" class="btn btn-link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="announcement-card">
+                <div class="announcement-date"><i class="far fa-calendar-alt"></i> May 5, 2024</div>
+                <h4>New Playground Opening</h4>
+                <p>The new children's playground will be opening next week.</p>
+                <a href="#" class="btn btn-link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Join Our Community Today</h2>
+            <p>Experience the best of modern suburban living in our premium residential subdivision.</p>
+            <div class="cta-buttons">
+                <a asp-controller="Account" asp-action="Register" class="btn btn-light">Register Now</a>
+                <a asp-controller="Home" asp-action="Contact" class="btn btn-outline-light">Contact Us</a>
             </div>
         </div>
     </div>

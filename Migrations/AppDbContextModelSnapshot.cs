@@ -174,6 +174,57 @@ namespace SubdivisionWebsite.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("SubdivisionWebsite.Models.Announcement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("CreatedById")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.ToTable("Announcements");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.AnnouncementRead", b =>
+                {
+                    b.Property<int>("AnnouncementId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime>("ReadAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("AnnouncementId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AnnouncementReads");
+                });
+
             modelBuilder.Entity("SubdivisionWebsite.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -246,7 +297,6 @@ namespace SubdivisionWebsite.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("StaffRole")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -269,6 +319,314 @@ namespace SubdivisionWebsite.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.Document", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("DocumentType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DownloadCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("FileType")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastUpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("LastUpdatedById")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("UploadedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("UploadedById")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LastUpdatedById");
+
+                    b.HasIndex("UploadedById");
+
+                    b.ToTable("Documents");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Color")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("CreatedById")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<TimeSpan?>("EndTime")
+                        .HasColumnType("time(6)");
+
+                    b.Property<bool>("IsAllDay")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastUpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("LastUpdatedById")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time(6)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("LastUpdatedById");
+
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.EventAttendee", b =>
+                {
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<bool>("IsAttending")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("RespondedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("EventId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("EventAttendees");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.Facility", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("ClosingTime")
+                        .HasColumnType("time(6)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<TimeSpan>("OpeningTime")
+                        .HasColumnType("time(6)");
+
+                    b.Property<decimal?>("ReservationFee")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Facilities");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.FacilityReservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal?>("AmountPaid")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime?>("ApprovedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("ApprovedById")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time(6)");
+
+                    b.Property<int?>("ExpectedAttendees")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FacilityId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsPaid")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("PaymentDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("PaymentReference")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Purpose")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("RejectionReason")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("ReservationDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time(6)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApprovedById");
+
+                    b.HasIndex("FacilityId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FacilityReservations");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ActionUrl")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("EmailSentAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsEmailSent")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsSMSSent")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("ReadAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("ReferenceId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("SMSSentAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -320,6 +678,140 @@ namespace SubdivisionWebsite.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.Announcement", b =>
+                {
+                    b.HasOne("SubdivisionWebsite.Models.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.AnnouncementRead", b =>
+                {
+                    b.HasOne("SubdivisionWebsite.Models.Announcement", "Announcement")
+                        .WithMany("ReadBy")
+                        .HasForeignKey("AnnouncementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SubdivisionWebsite.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Announcement");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.Document", b =>
+                {
+                    b.HasOne("SubdivisionWebsite.Models.ApplicationUser", "LastUpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("LastUpdatedById");
+
+                    b.HasOne("SubdivisionWebsite.Models.ApplicationUser", "UploadedBy")
+                        .WithMany()
+                        .HasForeignKey("UploadedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LastUpdatedBy");
+
+                    b.Navigation("UploadedBy");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.Event", b =>
+                {
+                    b.HasOne("SubdivisionWebsite.Models.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SubdivisionWebsite.Models.ApplicationUser", "LastUpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("LastUpdatedById");
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("LastUpdatedBy");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.EventAttendee", b =>
+                {
+                    b.HasOne("SubdivisionWebsite.Models.Event", "Event")
+                        .WithMany("Attendees")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SubdivisionWebsite.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.FacilityReservation", b =>
+                {
+                    b.HasOne("SubdivisionWebsite.Models.ApplicationUser", "ApprovedBy")
+                        .WithMany()
+                        .HasForeignKey("ApprovedById");
+
+                    b.HasOne("SubdivisionWebsite.Models.Facility", "Facility")
+                        .WithMany("Reservations")
+                        .HasForeignKey("FacilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SubdivisionWebsite.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApprovedBy");
+
+                    b.Navigation("Facility");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.Notification", b =>
+                {
+                    b.HasOne("SubdivisionWebsite.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.Announcement", b =>
+                {
+                    b.Navigation("ReadBy");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.Event", b =>
+                {
+                    b.Navigation("Attendees");
+                });
+
+            modelBuilder.Entity("SubdivisionWebsite.Models.Facility", b =>
+                {
+                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

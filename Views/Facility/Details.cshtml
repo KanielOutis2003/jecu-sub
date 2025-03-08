@@ -1,0 +1,159 @@
+@model SubdivisionWebsite.Models.Facility
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="container py-5">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index">Facilities</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
+        </ol>
+    </nav>
+
+    <div class="card shadow border-0 rounded-lg overflow-hidden">
+        <div class="row g-0">
+            <div class="col-md-6">
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="@Model.ImageUrl" class="img-fluid h-100 w-100 object-fit-cover" alt="@Model.Name">
+                }
+                else
+                {
+                    <img src="/images/facilities/default-facility.jpg" class="img-fluid h-100 w-100 object-fit-cover" alt="@Model.Name">
+                }
+            </div>
+            <div class="col-md-6">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h1 class="card-title fw-bold text-primary mb-0">@Model.Name</h1>
+                        @if (Model.IsActive)
+                        {
+                            <span class="badge bg-success">Available</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Unavailable</span>
+                        }
+                    </div>
+                    
+                    <p class="lead mb-4">@Model.Description</p>
+                    
+                    <div class="card mb-4 border-0 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Facility Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-box bg-light rounded-circle p-3 me-3">
+                                            <i class="fas fa-map-marker-alt text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Location</h6>
+                                            <p class="mb-0 text-muted">@Model.Location</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-box bg-light rounded-circle p-3 me-3">
+                                            <i class="fas fa-users text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Capacity</h6>
+                                            <p class="mb-0 text-muted">@Model.Capacity people</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-box bg-light rounded-circle p-3 me-3">
+                                            <i class="fas fa-clock text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Hours</h6>
+                                            <p class="mb-0 text-muted">@Model.OpeningTime.ToString("hh\\:mm") - @Model.ClosingTime.ToString("hh\\:mm")</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-box bg-light rounded-circle p-3 me-3">
+                                            <i class="fas fa-dollar-sign text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Reservation Fee</h6>
+                                            <p class="mb-0 text-muted">
+                                                @if (Model.ReservationFee.HasValue && Model.ReservationFee.Value > 0)
+                                                {
+                                                    @Model.ReservationFee.Value.ToString("C")
+                                                }
+                                                else
+                                                {
+                                                    <span>Free</span>
+                                                }
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex">
+                        @if (Model.IsActive)
+                        {
+                            <a asp-action="Reserve" asp-route-id="@Model.Id" class="btn btn-success btn-lg">
+                                <i class="fas fa-calendar-plus me-2"></i> Make a Reservation
+                            </a>
+                        }
+                        else
+                        {
+                            <button class="btn btn-secondary btn-lg" disabled>
+                                <i class="fas fa-calendar-plus me-2"></i> Currently Unavailable
+                            </button>
+                        }
+                        
+                        <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-arrow-left me-2"></i> Back to List
+                        </a>
+                        
+                        @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary btn-lg">
+                                <i class="fas fa-edit me-2"></i> Edit
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .icon-box {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .object-fit-cover {
+        object-fit: cover;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Add any JavaScript functionality here
+        });
+    </script>
+} 

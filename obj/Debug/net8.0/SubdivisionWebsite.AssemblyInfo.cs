@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SubdivisionWebsite")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d7489fbf0d82f0aac7ea0779273e96c4f4373ac")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0669f99e4803fd8a602f74efc180d1e838545dc5")]
 [assembly: System.Reflection.AssemblyProductAttribute("SubdivisionWebsite")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SubdivisionWebsite")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
