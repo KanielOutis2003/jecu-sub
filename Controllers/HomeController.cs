@@ -118,6 +118,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult AboutUs()
+    {
+        return View();
+    }
+
     [Authorize]
     public async Task<IActionResult> CommunityForum()
     {

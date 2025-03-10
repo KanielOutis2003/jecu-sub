@@ -37,6 +37,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "AboutUs" ? "active" : "")" asp-controller="Home" asp-action="AboutUs">
+                                <i class="fas fa-info-circle me-1"></i> About Us
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Facility" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "active" : "")" asp-controller="Facility" asp-action="Index">
                                 <i class="fas fa-building me-1"></i> Facilities
                             </a>
@@ -168,7 +173,14 @@
             <div class="row">
                 <div class="col-md-4">
                     <h5>About Us</h5>
-                    <p>A premium residential community designed for modern living with top-notch amenities and services.</p>
+                    <p class="mb-2">A premium residential community designed for modern living with top-notch amenities and services.</p>
+                    <p class="mb-0"><strong>SUBDIVISION WEBSITE SYSTEM PROJECT</strong></p>
+                    <p class="small text-muted">
+                        BY JOHN JECU N CUTANDA<br>
+                        JUN-DEL PATUASIC<br>
+                        JOHN VINCENT DAMPOR<br>
+                        ROD KENT ITO
+                    </p>
                 </div>
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
@@ -180,11 +192,16 @@
                 </div>
                 <div class="col-md-4">
                     <h5>Connect With Us</h5>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="social-links mb-3">
+                        <a href="https://web.facebook.com/john.cutanda" target="_blank" class="me-2"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="mailto:jecucutanda11@gmail.com" class="me-2"><i class="fas fa-envelope fa-2x"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-twitter fa-2x"></i></a>
                     </div>
+                    <p class="small">
+                        <i class="fab fa-facebook me-1"></i> <a href="https://web.facebook.com/john.cutanda" target="_blank">john.cutanda</a><br>
+                        <i class="fas fa-envelope me-1"></i> <a href="mailto:jecucutanda11@gmail.com">jecucutanda11@gmail.com</a>
+                    </p>
                 </div>
             </div>
             <div class="row mt-3">
