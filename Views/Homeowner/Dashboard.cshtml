@@ -1,0 +1,204 @@
+@{
+    ViewData["Title"] = "Homeowner Dashboard";
+    Layout = "_HomeownerLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">My Dashboard</h1>
+    </div>
+
+    <!-- Welcome Card -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Welcome to Your Homeowner Portal</h5>
+            <p class="card-text">Access all the features and services available to you as a homeowner in our community.</p>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Quick Actions</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <a asp-action="CommunityForum" class="btn btn-primary btn-block w-100">
+                                <i class="fas fa-comments me-2"></i> Community Forum
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a asp-action="ServiceRequests" class="btn btn-success btn-block w-100">
+                                <i class="fas fa-tools me-2"></i> Service Requests
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a asp-action="SecurityFeatures" class="btn btn-info btn-block w-100">
+                                <i class="fas fa-shield-alt me-2"></i> Security Features
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a asp-action="Profile" class="btn btn-secondary btn-block w-100">
+                                <i class="fas fa-user me-2"></i> My Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="row">
+        <!-- Community Forum Card -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Community Forum</div>
+                            <div class="mb-2">Connect with your neighbors, discuss community matters, and stay informed.</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <a asp-action="CommunityForum" class="btn btn-primary">
+                                    <i class="fas fa-comments me-2"></i> Access Forum
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service Requests Card -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Service Requests</div>
+                            <div class="mb-2">Submit maintenance requests, track their status, and get updates.</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <a asp-action="ServiceRequests" class="btn btn-success">
+                                    <i class="fas fa-tools me-2"></i> Submit Request
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-tools fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Features Card -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Security Features</div>
+                            <div class="mb-2">Register vehicles, manage visitor passes, and access security information.</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <a asp-action="SecurityFeatures" class="btn btn-info">
+                                    <i class="fas fa-shield-alt me-2"></i> Manage Security
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-shield-alt fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Recent Activities</h6>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.RecentActivities != null && ViewBag.RecentActivities.Count > 0)
+                    {
+                        <div class="activity-timeline">
+                            @foreach (var activity in ViewBag.RecentActivities)
+                            {
+                                <div class="activity-item">
+                                    <div class="activity-content">
+                                        <div class="activity-header">
+                                            <span class="activity-time">@activity.CreatedAt.ToString("MMM dd, yyyy HH:mm")</span>
+                                            <span class="badge bg-@activity.StatusColor">@activity.Status</span>
+                                        </div>
+                                        <p class="mb-0">@activity.Description</p>
+                                        <small class="text-muted">@activity.Module - @activity.Action</small>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-center text-muted">No recent activities found.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .activity-timeline {
+            position: relative;
+            padding: 1rem;
+        }
+
+        .activity-item {
+            position: relative;
+            padding: 1rem;
+            border-left: 2px solid #e3e6f0;
+            margin-bottom: 1rem;
+        }
+
+        .activity-item:before {
+            content: '';
+            position: absolute;
+            left: -0.5rem;
+            top: 1.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: #4e73df;
+            border: 2px solid #fff;
+        }
+
+        .activity-content {
+            padding-left: 1rem;
+        }
+
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-time {
+            font-size: 0.875rem;
+            color: #858796;
+        }
+    </style>
+} 

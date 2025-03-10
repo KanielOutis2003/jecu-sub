@@ -54,6 +54,24 @@
                                 </a>
                             </li>
                         }
+                        @if (User.IsInRole("Homeowner"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "CommunityForum" ? "active" : "")" asp-controller="Home" asp-action="CommunityForum">
+                                    <i class="fas fa-comments me-1"></i> Community Forum
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "SecurityFeatures" ? "active" : "")" asp-controller="Home" asp-action="SecurityFeatures">
+                                    <i class="fas fa-shield-alt me-1"></i> Security Features
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "ServiceRequests" ? "active" : "")" asp-controller="Home" asp-action="ServiceRequests">
+                                    <i class="fas fa-tools me-1"></i> Service Requests
+                                </a>
+                            </li>
+                        }
                     </ul>
                     <ul class="navbar-nav">
                         @if (User?.Identity?.IsAuthenticated == true)
@@ -81,6 +99,12 @@
                                     else if (User.IsInRole("Staff"))
                                     {
                                         <li><a class="dropdown-item" asp-controller="Staff" asp-action="Profile">
+                                            <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i> Profile
+                                        </a></li>
+                                    }
+                                    else if (User.IsInRole("Homeowner"))
+                                    {
+                                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">
                                             <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i> Profile
                                         </a></li>
                                     }

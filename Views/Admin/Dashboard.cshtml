@@ -6,8 +6,12 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Admin Dashboard</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="refreshDashboard">
+            <i class="fas fa-sync-alt fa-sm text-white-50"></i> Refresh Data
+        </a>
     </div>
 
+    <!-- Overview Cards -->
     <div class="row">
         <!-- Homeowners Card -->
         <div class="col-xl-3 col-md-6 mb-4">
@@ -49,36 +53,36 @@
             </div>
         </div>
 
-        <!-- Announcements Card -->
+        <!-- Service Requests Card -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Announcements</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.AnnouncementsCount</div>
+                                Active Requests</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.ActiveRequests</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-bullhorn fa-2x text-gray-300"></i>
+                            <i class="fas fa-tools fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Facilities Card -->
+        <!-- Pending Payments Card -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Facilities</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.FacilitiesCount</div>
+                                Pending Payments</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.PendingPayments</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-building fa-2x text-gray-300"></i>
+                            <i class="fas fa-credit-card fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -96,40 +100,45 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 mb-3">
-                            <a asp-action="HomeownersList" class="btn btn-primary btn-block">
+                            <a asp-action="HomeownersList" class="btn btn-primary btn-block w-100">
                                 <i class="fas fa-users me-2"></i> Manage Homeowners
                             </a>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <a asp-action="StaffList" class="btn btn-success btn-block">
+                            <a asp-action="StaffList" class="btn btn-success btn-block w-100">
                                 <i class="fas fa-user-tie me-2"></i> Manage Staff
                             </a>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <a asp-action="Announcements" class="btn btn-info btn-block">
-                                <i class="fas fa-bullhorn me-2"></i> Manage Announcements
+                            <a asp-action="Reports" class="btn btn-info btn-block w-100">
+                                <i class="fas fa-chart-bar me-2"></i> View Reports
                             </a>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <a asp-controller="Facility" asp-action="Index" class="btn btn-warning btn-block">
-                                <i class="fas fa-building me-2"></i> Manage Facilities
+                            <a asp-action="Documents" class="btn btn-warning btn-block w-100">
+                                <i class="fas fa-file-alt me-2"></i> Manage Documents
                             </a>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <a asp-controller="Facility" asp-action="ManageReservations" class="btn btn-secondary btn-block">
-                                <i class="fas fa-calendar-check me-2"></i> Manage Reservations
+                        <div class="col-md-3 mb-3">
+                            <a asp-action="ServiceRequests" class="btn btn-secondary btn-block w-100">
+                                <i class="fas fa-tools me-2"></i> Service Requests
                             </a>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <a asp-controller="Document" asp-action="Index" class="btn btn-dark btn-block">
-                                <i class="fas fa-file-alt me-2"></i> Manage Documents
+                        <div class="col-md-3 mb-3">
+                            <a asp-action="BillingPayments" class="btn btn-dark btn-block w-100">
+                                <i class="fas fa-credit-card me-2"></i> Billing & Payments
                             </a>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <a asp-controller="Event" asp-action="Index" class="btn btn-danger btn-block">
-                                <i class="fas fa-calendar-alt me-2"></i> Manage Events
+                        <div class="col-md-3 mb-3">
+                            <a asp-action="SecurityFeatures" class="btn btn-danger btn-block w-100">
+                                <i class="fas fa-shield-alt me-2"></i> Security Features
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a asp-action="CommunityForum" class="btn btn-primary btn-block w-100">
+                                <i class="fas fa-comments me-2"></i> Community Forum
                             </a>
                         </div>
                     </div>
@@ -138,52 +147,53 @@
         </div>
     </div>
 
-    <!-- Recent Activity -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Recent Activity</h6>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-info">Latest Announcements</h6>
-                                </div>
-                                <div class="card-body">
-                                    @if (ViewBag.AnnouncementsCount > 0)
-                                    {
-                                        <p>View the latest announcements in the <a href="@Url.Action("Announcements", "Admin")">Announcements</a> section.</p>
-                                    }
-                                    else
-                                    {
-                                        <p>No announcements have been posted yet. <a href="@Url.Action("CreateAnnouncement", "Admin")">Create one now</a>.</p>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-warning">Pending Reservations</h6>
-                                </div>
-                                <div class="card-body">
-                                    @if (ViewBag.PendingReservationsCount > 0)
-                                    {
-                                        <p>You have <strong>@ViewBag.PendingReservationsCount</strong> pending reservation(s) that require your attention. <a href="@Url.Action("ManageReservations", "Facility")">Review them now</a>.</p>
-                                    }
-                                    else
-                                    {
-                                        <p>There are no pending facility reservations at this time.</p>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Recent Activities -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Recent Activities</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Activity</th>
+                            <th>User</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.RecentActivities != null)
+                        {
+                            @foreach (var activity in ViewBag.RecentActivities)
+                            {
+                                <tr>
+                                    <td>@activity.Description</td>
+                                    <td>@activity.User?.UserName</td>
+                                    <td>@activity.CreatedAt.ToString("MMM dd, yyyy HH:mm")</td>
+                                    <td>
+                                        <span class="badge bg-@activity.StatusColor">@activity.Status</span>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</div> 
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Refresh dashboard functionality
+            document.getElementById('refreshDashboard').addEventListener('click', function(e) {
+                e.preventDefault();
+                // Add refresh logic here
+                alert('Refreshing dashboard data...');
+            });
+        });
+    </script>
+} 

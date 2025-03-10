@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using SubdivisionWebsite.Data;
 using SubdivisionWebsite.Models;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using SubdivisionWebsite.Services;
 using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+    options.UseSqlite(connectionString));
 
 // Add Identity services
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -26,6 +26,9 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 .AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders()
 .AddSignInManager<SignInManager<ApplicationUser>>();  // ✅ Explicitly add SignInManager
+
+// Register ActivityLogService
+builder.Services.AddScoped<IActivityLogService, ActivityLogService>();
 
 // Add this line to configure cookie settings
 builder.Services.ConfigureApplicationCookie(options =>

@@ -1,0 +1,165 @@
+@{
+    ViewData["Title"] = "Email Notifications";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Email Notifications</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#createNotificationModal">
+            <i class="fas fa-plus fa-sm text-white-50"></i> Create New Notification
+        </a>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Notification Templates</h6>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i> No notification templates have been created yet. Use the "Create New Notification" button to create templates.
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="notificationTemplatesTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Template Name</th>
+                                    <th>Subject</th>
+                                    <th>Last Modified</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- No data to display -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Notification History</h6>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i> No notifications have been sent yet. Notification history will appear here once notifications are sent.
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="notificationHistoryTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Recipients</th>
+                                    <th>Sent Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- No data to display -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Notification Modal -->
+<div class="modal fade" id="createNotificationModal" tabindex="-1" aria-labelledby="createNotificationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createNotificationModalLabel">Create New Notification</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="notificationTemplate" class="form-label">Template</label>
+                        <select class="form-select" id="notificationTemplate">
+                            <option value="">Select a template or create new</option>
+                            <option value="welcome">Welcome Email</option>
+                            <option value="event">Event Reminder</option>
+                            <option value="payment">Payment Due</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="notificationSubject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="notificationSubject" placeholder="Enter email subject">
+                    </div>
+                    <div class="mb-3">
+                        <label for="notificationContent" class="form-label">Content</label>
+                        <textarea class="form-control" id="notificationContent" rows="10" placeholder="Enter email content"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="notificationRecipients" class="form-label">Recipients</label>
+                        <select class="form-select" id="notificationRecipients">
+                            <option value="all">All Homeowners</option>
+                            <option value="new">New Homeowners</option>
+                            <option value="custom">Custom Selection</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="notificationSchedule" class="form-label">Schedule</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="scheduleOptions" id="sendNow" checked>
+                            <label class="form-check-label" for="sendNow">
+                                Send immediately
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="scheduleOptions" id="scheduleLater">
+                            <label class="form-check-label" for="scheduleLater">
+                                Schedule for later
+                            </label>
+                        </div>
+                        <div class="mt-2 d-none" id="scheduleDateTimeContainer">
+                            <input type="datetime-local" class="form-control" id="scheduleDateTime">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Send Notification</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#notificationTemplatesTable').DataTable();
+            $('#notificationHistoryTable').DataTable({
+                "order": [[2, "desc"]]
+            });
+
+            // Show/hide schedule datetime picker
+            $('input[name="scheduleOptions"]').change(function() {
+                if ($('#scheduleLater').is(':checked')) {
+                    $('#scheduleDateTimeContainer').removeClass('d-none');
+                } else {
+                    $('#scheduleDateTimeContainer').addClass('d-none');
+                }
+            });
+        });
+    </script>
+} 

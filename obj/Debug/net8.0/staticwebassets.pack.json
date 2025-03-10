@@ -69,12 +69,12 @@
       "PackagePath": "staticwebassets\\images\\facilities\\default-trail.jpg"
     },
     {
-      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\logo\\admin-logo.jpg",
-      "PackagePath": "staticwebassets\\images\\logo\\admin-logo.jpg"
-    },
-    {
       "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\logo\\admin-logo.png",
       "PackagePath": "staticwebassets\\images\\logo\\admin-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\profile\\default-profile.png",
+      "PackagePath": "staticwebassets\\images\\profile\\default-profile.png"
     },
     {
       "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\img\\default-profile.png",
@@ -333,6 +333,10 @@
       "PackagePath": "staticwebassets\\uploads\\facilities\\638770821785681688_COMMUNITY CENTER.jpg"
     },
     {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\a9bf1126-f3d4-4d88-a519-9d788dd3bd80_638772435445227960.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profiles\\a9bf1126-f3d4-4d88-a519-9d788dd3bd80_638772435445227960.jpg"
+    },
+    {
       "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\cfa7025f-84b8-4f4e-84f8-86fe917e192d_638770855224403147.HEIC",
       "PackagePath": "staticwebassets\\uploads\\profiles\\cfa7025f-84b8-4f4e-84f8-86fe917e192d_638770855224403147.HEIC"
     },
@@ -347,6 +351,10 @@
     {
       "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\cfa7025f-84b8-4f4e-84f8-86fe917e192d_638770891361336330.jpg",
       "PackagePath": "staticwebassets\\uploads\\profiles\\cfa7025f-84b8-4f4e-84f8-86fe917e192d_638770891361336330.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\e205183d-9607-40da-80db-e3d058c267e8_638772509395378743.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profiles\\e205183d-9607-40da-80db-e3d058c267e8_638772509395378743.jpg"
     },
     {
       "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\eda439a4-50a2-4a93-b73b-40a651575ea1_638767644741016629.jpg",

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SubdivisionWebsite.Models;
+using SubdivisionWebsite.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.IO;
 
 namespace SubdivisionWebsite.Controllers
 {
+    [Authorize]
     public class FacilityController : Controller
     {
         private readonly AppDbContext _context;

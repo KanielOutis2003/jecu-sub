@@ -1,0 +1,295 @@
+@{
+    ViewData["Title"] = "Billing & Payments";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Billing & Payments</h1>
+        <div>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm me-2" data-bs-toggle="modal" data-bs-target="#generateBillModal">
+                <i class="fas fa-file-invoice fa-sm text-white-50"></i> Generate Bills
+            </a>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#createPaymentModal">
+                <i class="fas fa-plus fa-sm text-white-50"></i> Record Payment
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Summary Cards -->
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Outstanding</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">₱0</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-money-bill-wave fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Payments This Month</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">₱0</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar-check fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Collection Rate</div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0%</div>
+                                </div>
+                                <div class="col">
+                                    <div class="progress progress-sm mr-2">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-chart-line fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Overdue Accounts</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Billing Records -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Billing Records</h6>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in">
+                    <a class="dropdown-item" href="#"><i class="fas fa-file-export fa-sm fa-fw mr-2"></i>Export to Excel</a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-file-pdf fa-sm fa-fw mr-2"></i>Export to PDF</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i class="fas fa-cog fa-sm fa-fw mr-2"></i>Settings</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i> No billing records have been created yet. Use the "Generate Bills" button to create bills for homeowners.
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="billingTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Bill ID</th>
+                            <th>Homeowner</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- No data to display -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment History -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Payment History</h6>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i> No payment records have been created yet. Payments will appear here once homeowners start making payments.
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="paymentsTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Bill ID</th>
+                            <th>Homeowner</th>
+                            <th>Amount</th>
+                            <th>Payment Date</th>
+                            <th>Payment Method</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- No data to display -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Generate Bills Modal -->
+<div class="modal fade" id="generateBillModal" tabindex="-1" aria-labelledby="generateBillModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="generateBillModalLabel">Generate Bills</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="billType" class="form-label">Bill Type</label>
+                        <select class="form-select" id="billType">
+                            <option value="monthly">Monthly Association Dues</option>
+                            <option value="quarterly">Quarterly Maintenance Fee</option>
+                            <option value="special">Special Assessment</option>
+                            <option value="custom">Custom Bill</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="billMonth" class="form-label">Billing Period</label>
+                        <input type="month" class="form-control" id="billMonth">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dueDate" class="form-label">Due Date</label>
+                        <input type="date" class="form-control" id="dueDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="billRecipients" class="form-label">Recipients</label>
+                        <select class="form-select" id="billRecipients">
+                            <option value="all">All Homeowners</option>
+                            <option value="active">Active Homeowners Only</option>
+                            <option value="custom">Custom Selection</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Generate Bills</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Record Payment Modal -->
+<div class="modal fade" id="createPaymentModal" tabindex="-1" aria-labelledby="createPaymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createPaymentModalLabel">Record Payment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="paymentHomeowner" class="form-label">Homeowner</label>
+                        <select class="form-select" id="paymentHomeowner">
+                            <option value="">Select homeowner</option>
+                            <option value="1">John Smith</option>
+                            <option value="2">Sarah Johnson</option>
+                            <option value="3">Michael Brown</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentBill" class="form-label">Bill Reference</label>
+                        <select class="form-select" id="paymentBill">
+                            <option value="">Select bill</option>
+                            <option value="BILL-2023-002">BILL-2023-002 (March 2023 Dues)</option>
+                            <option value="BILL-2023-003">BILL-2023-003 (March 2023 Dues)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentAmount" class="form-label">Amount</label>
+                        <input type="number" class="form-control" id="paymentAmount" step="0.01">
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentMethod" class="form-label">Payment Method</label>
+                        <select class="form-select" id="paymentMethod">
+                            <option value="cash">Cash</option>
+                            <option value="check">Check</option>
+                            <option value="bank">Bank Transfer</option>
+                            <option value="gcash">GCash</option>
+                            <option value="maya">Maya</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentDate" class="form-label">Payment Date</label>
+                        <input type="date" class="form-control" id="paymentDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentNotes" class="form-label">Notes</label>
+                        <textarea class="form-control" id="paymentNotes" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentReceipt" class="form-label">Upload Receipt</label>
+                        <input type="file" class="form-control" id="paymentReceipt">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Record Payment</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#billingTable').DataTable({
+                "order": [[4, "desc"]]
+            });
+            $('#paymentsTable').DataTable({
+                "order": [[4, "desc"]]
+            });
+        });
+    </script>
+} 

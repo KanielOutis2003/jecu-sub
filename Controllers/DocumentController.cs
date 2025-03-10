@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SubdivisionWebsite.Models;
+using SubdivisionWebsite.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace SubdivisionWebsite.Controllers
 {
+    [Authorize]
     public class DocumentController : Controller
     {
         private readonly AppDbContext _context;

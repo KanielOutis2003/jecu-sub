@@ -1,0 +1,273 @@
+@{
+    ViewData["Title"] = "Reports & Analytics";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Reports & Analytics</h1>
+        <div>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm me-2" id="refreshReports">
+                <i class="fas fa-sync-alt fa-sm text-white-50"></i> Refresh Data
+            </a>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#exportReportModal">
+                <i class="fas fa-download fa-sm text-white-50"></i> Export Reports
+            </a>
+        </div>
+    </div>
+
+    <!-- Report Categories -->
+    <div class="row mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Community Statistics</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#homeownerStats" class="text-decoration-none">Homeowner Demographics</a></li>
+                        <li><a href="#staffStats" class="text-decoration-none">Staff Performance</a></li>
+                        <li><a href="#facilityStats" class="text-decoration-none">Facility Usage</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Financial Reports</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#paymentStats" class="text-decoration-none">Payment Collection</a></li>
+                        <li><a href="#billingStats" class="text-decoration-none">Billing Analysis</a></li>
+                        <li><a href="#expenseStats" class="text-decoration-none">Expense Tracking</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Service & Security</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#serviceStats" class="text-decoration-none">Service Request Analysis</a></li>
+                        <li><a href="#securityStats" class="text-decoration-none">Security Incidents</a></li>
+                        <li><a href="#maintenanceStats" class="text-decoration-none">Maintenance Reports</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Community Engagement</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#forumStats" class="text-decoration-none">Forum Activity</a></li>
+                        <li><a href="#eventStats" class="text-decoration-none">Event Participation</a></li>
+                        <li><a href="#notificationStats" class="text-decoration-none">Communication Metrics</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Reports Sections -->
+    <div id="homeownerStats" class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Homeowner Demographics</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="chart-area">
+                        <canvas id="homeownerDistributionChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Block</th>
+                                    <th>Total Units</th>
+                                    <th>Occupied</th>
+                                    <th>Vacancy Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="serviceStats" class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Service Request Analysis</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="chart-pie mb-4">
+                        <canvas id="serviceRequestsStatusChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="chart-area">
+                        <canvas id="serviceRequestsTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="paymentStats" class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Payment Collection Analysis</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="chart-bar">
+                        <canvas id="paymentCollectionChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="card bg-info text-white shadow mb-4">
+                        <div class="card-body">
+                            Collection Rate
+                            <div class="text-white-50 small">Current Month</div>
+                        </div>
+                    </div>
+                    <div class="card bg-warning text-white shadow mb-4">
+                        <div class="card-body">
+                            Outstanding Payments
+                            <div class="text-white-50 small">Total Amount</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Export Report Modal -->
+<div class="modal fade" id="exportReportModal" tabindex="-1" aria-labelledby="exportReportModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exportReportModalLabel">Export Reports</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="reportType" class="form-label">Report Type</label>
+                        <select class="form-select" id="reportType">
+                            <option value="all">All Reports</option>
+                            <option value="community">Community Statistics</option>
+                            <option value="financial">Financial Reports</option>
+                            <option value="service">Service & Security</option>
+                            <option value="engagement">Community Engagement</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dateRange" class="form-label">Date Range</label>
+                        <select class="form-select" id="dateRange">
+                            <option value="last30">Last 30 Days</option>
+                            <option value="last90">Last 90 Days</option>
+                            <option value="lastYear">Last Year</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="format" class="form-label">Export Format</label>
+                        <select class="form-select" id="format">
+                            <option value="pdf">PDF</option>
+                            <option value="excel">Excel</option>
+                            <option value="csv">CSV</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Export</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Initialize charts when the document is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Homeowner Distribution Chart
+            new Chart(document.getElementById('homeownerDistributionChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Block A', 'Block B', 'Block C', 'Block D'],
+                    datasets: [{
+                        data: [30, 25, 20, 25],
+                        backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e']
+                    }]
+                }
+            });
+
+            // Service Requests Status Chart
+            new Chart(document.getElementById('serviceRequestsStatusChart'), {
+                type: 'pie',
+                data: {
+                    labels: ['Open', 'In Progress', 'Pending Review', 'Completed'],
+                    datasets: [{
+                        data: [15, 30, 20, 35],
+                        backgroundColor: ['#36b9cc', '#4e73df', '#f6c23e', '#1cc88a']
+                    }]
+                }
+            });
+
+            // Payment Collection Chart
+            new Chart(document.getElementById('paymentCollectionChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Collection Rate (%)',
+                        data: [85, 90, 88, 92, 87, 95],
+                        backgroundColor: '#4e73df'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+
+            // Service Requests Trend Chart
+            new Chart(document.getElementById('serviceRequestsTrendChart'), {
+                type: 'line',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    datasets: [{
+                        label: 'New Requests',
+                        data: [12, 19, 15, 17],
+                        borderColor: '#4e73df',
+                        tension: 0.1
+                    }]
+                }
+            });
+        });
+
+        // Refresh reports functionality
+        document.getElementById('refreshReports').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Add refresh logic here
+            alert('Refreshing reports...');
+        });
+    </script>
+} 

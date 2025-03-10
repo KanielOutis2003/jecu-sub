@@ -44,6 +44,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQW5ub3VuY2VtZW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/BillingPayments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQmlsbGluZ1BheW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/CommunityForum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29tbXVuaXR5Rm9ydW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/CreateAnnouncement.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlQW5ub3VuY2VtZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -52,20 +60,52 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/Documents.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRG9jdW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/EditStaff.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFN0YWZmLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/Events.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRXZlbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/Facilities.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRmFjaWxpdGllcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/HomeownersList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSG9tZW93bmVyc0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/Notifications.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTm90aWZpY2F0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/RegisterStaff.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVnaXN0ZXJTdGFmZi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/Reports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVwb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/SecurityFeatures.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2VjdXJpdHlGZWF0dXJlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/ServiceRequests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2VydmljZVJlcXVlc3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/StaffList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3RhZmZMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Admin/SystemSettings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3lzdGVtU2V0dGluZ3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Document/Create.cshtml]
@@ -120,8 +160,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlcUmVzZXJ2ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Homeowner/CommunityForum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZW93bmVyXENvbW11bml0eUZvcnVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Homeowner/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZW93bmVyXERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Homeowner/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZW93bmVyXFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Homeowner/SecurityFeatures.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZW93bmVyXFNlY3VyaXR5RmVhdHVyZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Homeowner/ServiceRequests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZW93bmVyXFNlcnZpY2VSZXF1ZXN0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Home/Announcements.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBbm5vdW5jZW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Home/CommunityForum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb21tdW5pdHlGb3J1bS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Home/Index.cshtml]
@@ -130,6 +194,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Home/SecurityFeatures.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWN1cml0eUZlYXR1cmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Home/ServiceRequests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXJ2aWNlUmVxdWVzdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Notification/Index.cshtml]
@@ -146,6 +218,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Shared/_HomeownerLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ib21lb3duZXJMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Shared/_StaffLayout.cshtml]

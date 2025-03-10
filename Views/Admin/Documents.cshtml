@@ -1,0 +1,211 @@
+@{
+    ViewData["Title"] = "Document Management";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Document Management</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#uploadDocumentModal">
+            <i class="fas fa-upload fa-sm text-white-50"></i> Upload Document
+        </a>
+    </div>
+
+    <!-- Document Categories -->
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Total Documents</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalDocuments</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Public Documents</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.PublicDocuments</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file-alt fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Private Documents</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.PrivateDocuments</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file-contract fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Recent Uploads</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.RecentUploads</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-upload fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Document List -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Document Library</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="documentsTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Access Level</th>
+                            <th>Upload Date</th>
+                            <th>Size</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.Documents != null)
+                        {
+                            @foreach (var doc in ViewBag.Documents)
+                            {
+                                <tr>
+                                    <td>@doc.Title</td>
+                                    <td>@doc.Category</td>
+                                    <td>
+                                        @if (doc.IsPublic)
+                                        {
+                                            <span class="badge bg-success">Public</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-warning">Private</span>
+                                        }
+                                    </td>
+                                    <td>@doc.UploadDate.ToString("MMM dd, yyyy")</td>
+                                    <td>@doc.Size</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href="@doc.Url" class="btn btn-primary btn-sm">
+                                                <i class="fas fa-download"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editDocumentModal" data-document-id="@doc.Id">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteDocumentModal" data-document-id="@doc.Id">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Upload Document Modal -->
+<div class="modal fade" id="uploadDocumentModal" tabindex="-1" aria-labelledby="uploadDocumentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadDocumentModalLabel">Upload New Document</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="uploadDocumentForm">
+                    <div class="mb-3">
+                        <label for="documentTitle" class="form-label">Document Title</label>
+                        <input type="text" class="form-control" id="documentTitle" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="documentCategory" class="form-label">Category</label>
+                        <select class="form-select" id="documentCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="policy">Policy</option>
+                            <option value="form">Form</option>
+                            <option value="notice">Notice</option>
+                            <option value="report">Report</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="documentAccess" class="form-label">Access Level</label>
+                        <select class="form-select" id="documentAccess" required>
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="documentFile" class="form-label">File</label>
+                        <input type="file" class="form-control" id="documentFile" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="documentDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="documentDescription" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="uploadDocumentBtn">Upload</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#documentsTable').DataTable({
+                order: [[3, 'desc']]
+            });
+
+            $('#uploadDocumentBtn').click(function() {
+                // Add upload logic here
+                alert('Document upload functionality will be implemented');
+            });
+        });
+    </script>
+} 

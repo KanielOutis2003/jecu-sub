@@ -1,0 +1,121 @@
+@model List<SubdivisionWebsite.Models.Event>
+@{
+    ViewData["Title"] = "Manage Events";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Manage Events</h1>
+        <a href="@Url.Action("Create", "Event")" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-plus fa-sm text-white-50"></i> Add New Event
+        </a>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">All Events</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="eventsTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var evt in Model)
+                            {
+                                <tr>
+                                    <td>@evt.Title</td>
+                                    <td>@evt.StartDate.ToString("MMM dd, yyyy") @(evt.IsAllDay ? "(All day)" : evt.StartTime.ToString("hh:mm tt"))</td>
+                                    <td>@evt.Location</td>
+                                    <td>
+                                        @{
+                                            var now = DateTime.Now;
+                                            if (evt.StartDate > now)
+                                            {
+                                                <span class="badge bg-success">Upcoming</span>
+                                            }
+                                            else if (evt.StartDate.Date == now.Date)
+                                            {
+                                                <span class="badge bg-primary">Today</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-secondary">Past</span>
+                                            }
+                                        }
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Details", "Event", new { id = evt.Id })" class="btn btn-info btn-sm">
+                                            <i class="fas fa-info-circle"></i>
+                                        </a>
+                                        <a href="@Url.Action("Edit", "Event", new { id = evt.Id })" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal@(evt.Id)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+
+                                        <!-- Delete Modal -->
+                                        <div class="modal fade" id="deleteModal@(evt.Id)" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to delete the event: <strong>@evt.Title</strong>?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                        <form asp-controller="Event" asp-action="Delete" asp-route-id="@evt.Id" method="post">
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center">No events found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#eventsTable').DataTable({
+                "order": [[1, "desc"]]
+            });
+        });
+    </script>
+} 

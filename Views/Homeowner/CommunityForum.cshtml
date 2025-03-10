@@ -1,0 +1,207 @@
+@{
+    ViewData["Title"] = "Community Forum";
+    Layout = "_HomeownerLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Community Forum</h1>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createPostModal">
+            <i class="fas fa-plus me-2"></i> New Post
+        </button>
+    </div>
+
+    <!-- Forum Categories -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Categories</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="category-card text-center p-3 border rounded">
+                                <i class="fas fa-bullhorn fa-2x mb-2 text-primary"></i>
+                                <h5>Announcements</h5>
+                                <p class="mb-0 text-muted">Official community updates</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="category-card text-center p-3 border rounded">
+                                <i class="fas fa-calendar-alt fa-2x mb-2 text-success"></i>
+                                <h5>Events</h5>
+                                <p class="mb-0 text-muted">Community gatherings</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="category-card text-center p-3 border rounded">
+                                <i class="fas fa-hands-helping fa-2x mb-2 text-info"></i>
+                                <h5>Help & Support</h5>
+                                <p class="mb-0 text-muted">Get assistance</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="category-card text-center p-3 border rounded">
+                                <i class="fas fa-comments fa-2x mb-2 text-warning"></i>
+                                <h5>General</h5>
+                                <p class="mb-0 text-muted">Open discussions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Posts -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 font-weight-bold text-primary">Recent Posts</h6>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown">
+                            Sort By
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Most Recent</a></li>
+                            <li><a class="dropdown-item" href="#">Most Popular</a></li>
+                            <li><a class="dropdown-item" href="#">Most Commented</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="forum-posts">
+                        <!-- Sample Posts -->
+                        <div class="forum-post p-3 border-bottom">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5 class="mb-1">Welcome to our new community forum!</h5>
+                                    <p class="text-muted mb-2">Posted by Admin - 2 hours ago</p>
+                                    <p class="mb-2">Welcome everyone! This is a space for our community to connect...</p>
+                                    <div class="post-actions">
+                                        <button class="btn btn-sm btn-outline-primary me-2">
+                                            <i class="fas fa-comment me-1"></i> Reply
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-secondary">
+                                            <i class="fas fa-heart me-1"></i> Like
+                                        </button>
+                                    </div>
+                                </div>
+                                <span class="badge bg-primary">Announcement</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Post Modal -->
+<div class="modal fade" id="createPostModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create New Post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="createPostForm">
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" required>
+                            <option value="">Select category</option>
+                            <option value="announcements">Announcements</option>
+                            <option value="events">Events</option>
+                            <option value="help">Help & Support</option>
+                            <option value="general">General Discussion</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Content</label>
+                        <textarea class="form-control" rows="5" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="submitPost()">Create Post</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function submitPost() {
+            const form = document.getElementById('createPostForm');
+            const title = form.querySelector('input[type="text"]').value;
+            const category = form.querySelector('select').value;
+            const content = form.querySelector('textarea').value;
+
+            if (!title || !category || !content) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            fetch('/Homeowner/CreateForumPost', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    title: title,
+                    content: content,
+                    category: category
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    location.reload();
+                } else {
+                    alert('Error creating post');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error creating post');
+            });
+        }
+    </script>
+}
+
+@section Styles {
+    <style>
+        .category-card {
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .forum-post {
+            transition: background-color 0.2s;
+        }
+
+        .forum-post:hover {
+            background-color: #f8f9fc;
+        }
+
+        .post-actions {
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .forum-post:hover .post-actions {
+            opacity: 1;
+        }
+    </style>
+} 

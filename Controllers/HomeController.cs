@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using System.Threading.Tasks;
+using SubdivisionWebsite.Data;
 
 namespace SubdivisionWebsite.Controllers;
 
@@ -114,6 +115,51 @@ public class HomeController : Controller
 
     public IActionResult Privacy()
     {
+        return View();
+    }
+
+    [Authorize]
+    public async Task<IActionResult> CommunityForum()
+    {
+        var currentUser = await _userManager.GetUserAsync(User);
+        if (currentUser == null)
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        // Log activity if needed
+        // You can add activity logging here if you have the service
+
+        return View();
+    }
+
+    [Authorize]
+    public async Task<IActionResult> SecurityFeatures()
+    {
+        var currentUser = await _userManager.GetUserAsync(User);
+        if (currentUser == null)
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        // Log activity if needed
+        // You can add activity logging here if you have the service
+
+        return View();
+    }
+
+    [Authorize]
+    public async Task<IActionResult> ServiceRequests()
+    {
+        var currentUser = await _userManager.GetUserAsync(User);
+        if (currentUser == null)
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        // Log activity if needed
+        // You can add activity logging here if you have the service
+
         return View();
     }
 

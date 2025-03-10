@@ -1,0 +1,308 @@
+@{
+    ViewData["Title"] = "Security Features";
+    Layout = "_HomeownerLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Security Features</h1>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Quick Actions</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <button class="btn btn-primary btn-block w-100" data-bs-toggle="modal" data-bs-target="#registerVehicleModal">
+                                <i class="fas fa-car me-2"></i> Register Vehicle
+                            </button>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <button class="btn btn-success btn-block w-100" data-bs-toggle="modal" data-bs-target="#requestVisitorPassModal">
+                                <i class="fas fa-id-card me-2"></i> Request Visitor Pass
+                            </button>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <button class="btn btn-info btn-block w-100" data-bs-toggle="modal" data-bs-target="#reportIncidentModal">
+                                <i class="fas fa-exclamation-triangle me-2"></i> Report Incident
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registered Vehicles -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">My Registered Vehicles</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Vehicle Type</th>
+                                    <th>Make/Model</th>
+                                    <th>Plate Number</th>
+                                    <th>Color</th>
+                                    <th>Status</th>
+                                    <th>Registration Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Sample Vehicle -->
+                                <tr>
+                                    <td>Car</td>
+                                    <td>Toyota Camry</td>
+                                    <td>ABC 123</td>
+                                    <td>Silver</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td>Mar 10, 2024</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info me-1" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" title="Remove">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visitor Passes -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Visitor Passes</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Pass ID</th>
+                                    <th>Visitor Name</th>
+                                    <th>Purpose</th>
+                                    <th>Valid From</th>
+                                    <th>Valid Until</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Sample Pass -->
+                                <tr>
+                                    <td>#VP001</td>
+                                    <td>John Smith</td>
+                                    <td>Family Visit</td>
+                                    <td>Mar 15, 2024</td>
+                                    <td>Mar 17, 2024</td>
+                                    <td><span class="badge bg-warning">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info me-1" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" title="Cancel">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Register Vehicle Modal -->
+<div class="modal fade" id="registerVehicleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Register Vehicle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="registerVehicleForm">
+                    <div class="mb-3">
+                        <label class="form-label">Vehicle Type</label>
+                        <select class="form-select" required>
+                            <option value="">Select type</option>
+                            <option value="car">Car</option>
+                            <option value="motorcycle">Motorcycle</option>
+                            <option value="truck">Truck</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Make/Model</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Plate Number</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Color</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="registerVehicle()">Register</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Request Visitor Pass Modal -->
+<div class="modal fade" id="requestVisitorPassModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Request Visitor Pass</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="visitorPassForm">
+                    <div class="mb-3">
+                        <label class="form-label">Visitor Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Purpose of Visit</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Valid From</label>
+                            <input type="datetime-local" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Valid Until</label>
+                            <input type="datetime-local" class="form-control" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Request Pass</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Report Incident Modal -->
+<div class="modal fade" id="reportIncidentModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Report Security Incident</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="incidentForm">
+                    <div class="mb-3">
+                        <label class="form-label">Incident Type</label>
+                        <select class="form-select" required>
+                            <option value="">Select type</option>
+                            <option value="suspicious">Suspicious Activity</option>
+                            <option value="theft">Theft</option>
+                            <option value="vandalism">Vandalism</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Location</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date & Time</label>
+                        <input type="datetime-local" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" rows="4" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Submit Report</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function registerVehicle() {
+            const form = document.getElementById('registerVehicleForm');
+            const vehicleType = form.querySelector('select').value;
+            const makeModel = form.querySelectorAll('input')[0].value;
+            const plateNumber = form.querySelectorAll('input')[1].value;
+            const color = form.querySelectorAll('input')[2].value;
+
+            if (!vehicleType || !makeModel || !plateNumber || !color) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            fetch('/Homeowner/RegisterVehicle', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    vehicleType: vehicleType,
+                    makeModel: makeModel,
+                    plateNumber: plateNumber,
+                    color: color
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    location.reload();
+                } else {
+                    alert('Error registering vehicle');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error registering vehicle');
+            });
+        }
+    </script>
+}
+
+@section Styles {
+    <style>
+        .table td {
+            vertical-align: middle;
+        }
+
+        .btn-block {
+            padding: 1rem;
+        }
+    </style>
+} 

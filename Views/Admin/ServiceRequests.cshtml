@@ -1,0 +1,300 @@
+@{
+    ViewData["Title"] = "Service Request Management";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Service Request Management</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#createServiceModal">
+            <i class="fas fa-plus fa-sm text-white-50"></i> Create New Service Request
+        </a>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Filters and Search -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Filter Service Requests</h6>
+        </div>
+        <div class="card-body">
+            <form class="row g-3">
+                <div class="col-md-3">
+                    <label for="statusFilter" class="form-label">Status</label>
+                    <select id="statusFilter" class="form-select">
+                        <option value="">All Statuses</option>
+                        <option value="Open">Open</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Pending Review">Pending Review</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="typeFilter" class="form-label">Request Type</label>
+                    <select id="typeFilter" class="form-select">
+                        <option value="">All Types</option>
+                        <option value="Maintenance">Maintenance</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Landscaping">Landscaping</option>
+                        <option value="Common Area">Common Area</option>
+                        <option value="Security">Security</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="priorityFilter" class="form-label">Priority</label>
+                    <select id="priorityFilter" class="form-select">
+                        <option value="">All Priorities</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Emergency">Emergency</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="dateFilter" class="form-label">Date Range</label>
+                    <select id="dateFilter" class="form-select">
+                        <option value="">All Dates</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                        <option value="quarter">Last 3 Months</option>
+                    </select>
+                </div>
+                <div class="col-12 mt-3 text-end">
+                    <button type="button" class="btn btn-secondary me-2">Reset Filters</button>
+                    <button type="button" class="btn btn-primary">Apply Filters</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Service Requests Table -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">All Service Requests</h6>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i> No service requests have been submitted yet. Service requests will appear here once homeowners start submitting them.
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="serviceRequestsTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Requester</th>
+                            <th>Type</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Submitted</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- No data to display -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Service Request Modal -->
+<div class="modal fade" id="createServiceModal" tabindex="-1" aria-labelledby="createServiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createServiceModalLabel">Create New Service Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="serviceTitle" class="form-label">Request Title</label>
+                        <input type="text" class="form-control" id="serviceTitle" placeholder="Enter a brief title for the request">
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="serviceType" class="form-label">Request Type</label>
+                            <select class="form-select" id="serviceType">
+                                <option value="">Select type</option>
+                                <option value="Maintenance">Maintenance</option>
+                                <option value="Plumbing">Plumbing</option>
+                                <option value="Electrical">Electrical</option>
+                                <option value="Landscaping">Landscaping</option>
+                                <option value="Common Area">Common Area</option>
+                                <option value="Security">Security</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="servicePriority" class="form-label">Priority</label>
+                            <select class="form-select" id="servicePriority">
+                                <option value="Low">Low</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="High">High</option>
+                                <option value="Emergency">Emergency</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="serviceLocation" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="serviceLocation" placeholder="Specify location">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="serviceDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="serviceDescription" rows="5" placeholder="Please describe the issue in detail"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="serviceAttachment" class="form-label">Attachments (Photos/Documents)</label>
+                        <input class="form-control" type="file" id="serviceAttachment" multiple>
+                        <div class="form-text">You can upload multiple files. Maximum size per file: 5MB</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Assigned To</label>
+                        <select class="form-select" id="serviceAssignee">
+                            <option value="">Unassigned</option>
+                            <option value="1">John Maintenance</option>
+                            <option value="2">Sarah Electrician</option>
+                            <option value="3">Mark Plumber</option>
+                            <option value="4">Jessica Landscaper</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Submit Request</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View Service Request Modal -->
+<div class="modal fade" id="viewServiceModal" tabindex="-1" aria-labelledby="viewServiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewServiceModalLabel">Service Request Details: SR-2023-001</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <p><strong>Requester:</strong> John Smith</p>
+                        <p><strong>Contact:</strong> johnsmith@example.com | (555) 123-4567</p>
+                        <p><strong>Address:</strong> 123 Maple Street, Block 4, Lot 12</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Status:</strong> <span class="badge bg-primary">In Progress</span></p>
+                        <p><strong>Priority:</strong> <span class="badge bg-danger">High</span></p>
+                        <p><strong>Submitted:</strong> March 18, 2023 at 09:25 AM</p>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Request Details</h6>
+                    </div>
+                    <div class="card-body">
+                        <h5>Leaking Pipe in Clubhouse Bathroom</h5>
+                        <p><strong>Type:</strong> Plumbing</p>
+                        <p><strong>Location:</strong> Clubhouse - Main Floor Women's Bathroom</p>
+                        <p><strong>Description:</strong></p>
+                        <p>There is a significant water leak coming from under the sink in the women's bathroom at the clubhouse. The leak appears to be coming from the pipe connection. Water is pooling on the floor and could cause damage if not fixed promptly.</p>
+                        
+                        <p><strong>Attachments:</strong></p>
+                        <div class="row mb-3">
+                            <div class="col-md-2 mb-2">
+                                <a href="#" class="text-decoration-none">
+                                    <div class="attachment-thumbnail">
+                                        <img src="https://via.placeholder.com/100" alt="Attachment thumbnail" class="img-thumbnail">
+                                        <span>photo1.jpg</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-2 mb-2">
+                                <a href="#" class="text-decoration-none">
+                                    <div class="attachment-thumbnail">
+                                        <img src="https://via.placeholder.com/100" alt="Attachment thumbnail" class="img-thumbnail">
+                                        <span>photo2.jpg</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Assignment & Updates</h6>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Assigned To:</strong> Mark Plumber</p>
+                        <p><strong>Estimated Completion:</strong> March 20, 2023</p>
+                        
+                        <hr>
+                        
+                        <h6 class="font-weight-bold">Activity Log</h6>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <p class="timeline-date">March 19, 2023 - 10:00 AM</p>
+                                <p class="timeline-content"><strong>Mark Plumber:</strong> Parts have been ordered. Scheduled for repair tomorrow morning.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="timeline-date">March 18, 2023 - 11:30 AM</p>
+                                <p class="timeline-content"><strong>System:</strong> Request assigned to Mark Plumber</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="timeline-date">March 18, 2023 - 09:45 AM</p>
+                                <p class="timeline-content"><strong>Admin:</strong> Status changed to "In Progress". Priority set to "High".</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="timeline-date">March 18, 2023 - 09:25 AM</p>
+                                <p class="timeline-content"><strong>System:</strong> Request created by John Smith</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-weight-bold">Add Update</h6>
+                            <textarea class="form-control mb-2" rows="3" placeholder="Enter an update or comment..."></textarea>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value="" id="notifyRequester">
+                                <label class="form-check-label" for="notifyRequester">
+                                    Notify requester of this update
+                                </label>
+                            </div>
+                            <button class="btn btn-primary">Post Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Update Status</button>
+                <button type="button" class="btn btn-success">Mark as Completed</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#serviceRequestsTable').DataTable({
+                "order": [[6, "desc"]]
+            });
+        });
+    </script>
+} 

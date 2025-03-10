@@ -1,0 +1,495 @@
+@{
+    ViewData["Title"] = "System Settings";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">System Settings</h1>
+        <button class="btn btn-primary" id="saveAllSettings">
+            <i class="fas fa-save me-2"></i>Save All Changes
+        </button>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Settings Tabs -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <ul class="nav nav-tabs card-header-tabs" id="settingsTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="general-tab" data-bs-toggle="tab" href="#general" role="tab">
+                        <i class="fas fa-cog me-2"></i>General
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="email-tab" data-bs-toggle="tab" href="#email" role="tab">
+                        <i class="fas fa-envelope me-2"></i>Email
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="payment-tab" data-bs-toggle="tab" href="#payment" role="tab">
+                        <i class="fas fa-credit-card me-2"></i>Payment
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="security-tab" data-bs-toggle="tab" href="#security" role="tab">
+                        <i class="fas fa-shield-alt me-2"></i>Security
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="backup-tab" data-bs-toggle="tab" href="#backup" role="tab">
+                        <i class="fas fa-database me-2"></i>Backup & Restore
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="settingsTabContent">
+                <!-- General Settings Tab -->
+                <div class="tab-pane fade show active" id="general" role="tabpanel">
+                    <h5 class="mb-4">General Settings</h5>
+                    <form>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Subdivision Name</label>
+                                    <input type="text" class="form-control" value="Subdivision Name">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Address</label>
+                                    <textarea class="form-control" rows="3">123 Main Street, City, Province</textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Contact Email</label>
+                                    <input type="email" class="form-control" value="contact@subdivision.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Contact Phone</label>
+                                    <input type="tel" class="form-control" value="+63 912 345 6789">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Logo</label>
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://via.placeholder.com/150" alt="Logo" class="img-thumbnail me-3" style="width: 150px;">
+                                        <div>
+                                            <input type="file" class="form-control mb-2">
+                                            <button type="button" class="btn btn-outline-danger btn-sm">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Timezone</label>
+                                    <select class="form-select">
+                                        <option value="Asia/Manila" selected>Asia/Manila (GMT+8)</option>
+                                        <option value="Asia/Singapore">Asia/Singapore (GMT+8)</option>
+                                        <option value="America/New_York">America/New_York (GMT-5)</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Date Format</label>
+                                    <select class="form-select">
+                                        <option value="MM/dd/yyyy" selected>MM/DD/YYYY</option>
+                                        <option value="dd/MM/yyyy">DD/MM/YYYY</option>
+                                        <option value="yyyy-MM-dd">YYYY-MM-DD</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Currency</label>
+                                    <select class="form-select">
+                                        <option value="PHP" selected>Philippine Peso (₱)</option>
+                                        <option value="USD">US Dollar ($)</option>
+                                        <option value="EUR">Euro (€)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary">Save General Settings</button>
+                    </form>
+                </div>
+
+                <!-- Email Settings Tab -->
+                <div class="tab-pane fade" id="email" role="tabpanel">
+                    <h5 class="mb-4">Email Settings</h5>
+                    <form>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">SMTP Server</label>
+                                    <input type="text" class="form-control" value="smtp.example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">SMTP Port</label>
+                                    <input type="number" class="form-control" value="587">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">SMTP Username</label>
+                                    <input type="text" class="form-control" value="username@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">SMTP Password</label>
+                                    <input type="password" class="form-control" value="********">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Encryption</label>
+                                    <select class="form-select">
+                                        <option value="tls" selected>TLS</option>
+                                        <option value="ssl">SSL</option>
+                                        <option value="none">None</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">From Email</label>
+                                    <input type="email" class="form-control" value="noreply@subdivision.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">From Name</label>
+                                    <input type="text" class="form-control" value="Subdivision Admin">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email Signature</label>
+                                    <textarea class="form-control" rows="4">Best regards,
+Subdivision Management Team
+123 Main Street, City, Province
++63 912 345 6789</textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#testEmailModal">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Test Email
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary">Save Email Settings</button>
+                    </form>
+                </div>
+
+                <!-- Payment Settings Tab -->
+                <div class="tab-pane fade" id="payment" role="tabpanel">
+                    <h5 class="mb-4">Payment Settings</h5>
+                    <form>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6 class="mb-3">Payment Methods</h6>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="enableCash" checked>
+                                    <label class="form-check-label" for="enableCash">Cash</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="enableCheck" checked>
+                                    <label class="form-check-label" for="enableCheck">Check</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="enableBankTransfer" checked>
+                                    <label class="form-check-label" for="enableBankTransfer">Bank Transfer</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="enableGCash" checked>
+                                    <label class="form-check-label" for="enableGCash">GCash</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="enableMaya" checked>
+                                    <label class="form-check-label" for="enableMaya">Maya</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="mb-3">Payment Details</h6>
+                                <div class="mb-3">
+                                    <label class="form-label">Bank Name</label>
+                                    <input type="text" class="form-control" value="Sample Bank">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Account Name</label>
+                                    <input type="text" class="form-control" value="Subdivision HOA">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Account Number</label>
+                                    <input type="text" class="form-control" value="1234567890">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">GCash Number</label>
+                                    <input type="text" class="form-control" value="09123456789">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6 class="mb-3">Due Dates & Penalties</h6>
+                                <div class="mb-3">
+                                    <label class="form-label">Monthly Dues Due Date</label>
+                                    <select class="form-select">
+                                        <option value="1">1st of the month</option>
+                                        <option value="5">5th of the month</option>
+                                        <option value="10">10th of the month</option>
+                                        <option value="15" selected>15th of the month</option>
+                                        <option value="30">Last day of the month</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Late Payment Penalty (%)</label>
+                                    <input type="number" class="form-control" value="5" min="0" max="100" step="0.01">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Grace Period (Days)</label>
+                                    <input type="number" class="form-control" value="7" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary">Save Payment Settings</button>
+                    </form>
+                </div>
+
+                <!-- Security Settings Tab -->
+                <div class="tab-pane fade" id="security" role="tabpanel">
+                    <h5 class="mb-4">Security Settings</h5>
+                    <form>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6 class="mb-3">Password Policy</h6>
+                                <div class="mb-3">
+                                    <label class="form-label">Minimum Password Length</label>
+                                    <input type="number" class="form-control" value="8" min="6">
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="requireUppercase" checked>
+                                    <label class="form-check-label" for="requireUppercase">Require Uppercase Letters</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="requireLowercase" checked>
+                                    <label class="form-check-label" for="requireLowercase">Require Lowercase Letters</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="requireNumbers" checked>
+                                    <label class="form-check-label" for="requireNumbers">Require Numbers</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="requireSpecialChars" checked>
+                                    <label class="form-check-label" for="requireSpecialChars">Require Special Characters</label>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Password Expiry (Days)</label>
+                                    <input type="number" class="form-control" value="90" min="0">
+                                    <small class="form-text text-muted">0 = Never expires</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="mb-3">Login Security</h6>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="enableTwoFactor">
+                                    <label class="form-check-label" for="enableTwoFactor">Enable Two-Factor Authentication</label>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Failed Login Attempts Before Lockout</label>
+                                    <input type="number" class="form-control" value="5" min="1">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Account Lockout Duration (Minutes)</label>
+                                    <input type="number" class="form-control" value="30" min="1">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Session Timeout (Minutes)</label>
+                                    <input type="number" class="form-control" value="30" min="1">
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="enableAuditLog" checked>
+                                    <label class="form-check-label" for="enableAuditLog">Enable Audit Logging</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary">Save Security Settings</button>
+                    </form>
+                </div>
+
+                <!-- Backup & Restore Tab -->
+                <div class="tab-pane fade" id="backup" role="tabpanel">
+                    <h5 class="mb-4">Backup & Restore</h5>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h6 class="m-0 font-weight-bold text-primary">Database Backup</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>Create a backup of your database. This will include all data such as users, announcements, facilities, etc.</p>
+                                    <div class="mb-3">
+                                        <label class="form-label">Backup Type</label>
+                                        <select class="form-select mb-3">
+                                            <option value="full" selected>Full Backup</option>
+                                            <option value="data">Data Only</option>
+                                            <option value="schema">Schema Only</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="fas fa-download me-2"></i>Create Backup
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="m-0 font-weight-bold text-primary">Automated Backups</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="enableAutoBackup" checked>
+                                        <label class="form-check-label" for="enableAutoBackup">Enable Automated Backups</label>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Backup Frequency</label>
+                                        <select class="form-select">
+                                            <option value="daily">Daily</option>
+                                            <option value="weekly" selected>Weekly</option>
+                                            <option value="monthly">Monthly</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Retention Period (Days)</label>
+                                        <input type="number" class="form-control" value="30" min="1">
+                                    </div>
+                                    <button type="button" class="btn btn-primary">Save Backup Settings</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h6 class="m-0 font-weight-bold text-primary">Restore Database</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-danger">Warning: Restoring a backup will overwrite your current database. This action cannot be undone.</p>
+                                    <div class="mb-3">
+                                        <label class="form-label">Upload Backup File</label>
+                                        <input type="file" class="form-control mb-3">
+                                    </div>
+                                    <button type="button" class="btn btn-warning">
+                                        <i class="fas fa-upload me-2"></i>Restore Backup
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="m-0 font-weight-bold text-primary">Recent Backups</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Size</th>
+                                                    <th>Type</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2023-03-20 08:00 AM</td>
+                                                    <td>15.2 MB</td>
+                                                    <td>Full</td>
+                                                    <td>
+                                                        <button class="btn btn-info btn-sm">
+                                                            <i class="fas fa-download"></i>
+                                                        </button>
+                                                        <button class="btn btn-danger btn-sm">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2023-03-13 08:00 AM</td>
+                                                    <td>14.8 MB</td>
+                                                    <td>Full</td>
+                                                    <td>
+                                                        <button class="btn btn-info btn-sm">
+                                                            <i class="fas fa-download"></i>
+                                                        </button>
+                                                        <button class="btn btn-danger btn-sm">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Test Email Modal -->
+<div class="modal fade" id="testEmailModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Send Test Email</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Recipient Email</label>
+                        <input type="email" class="form-control" placeholder="Enter email address">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Subject</label>
+                        <input type="text" class="form-control" value="Test Email from Subdivision System">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" rows="4">This is a test email from the Subdivision Management System. If you received this email, it means the email settings are configured correctly.</textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Send Test Email</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Initialize tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+
+            // Save all settings button
+            $('#saveAllSettings').click(function() {
+                // Show loading indicator
+                $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...');
+                $(this).prop('disabled', true);
+                
+                // Simulate saving (would be an AJAX call in production)
+                setTimeout(function() {
+                    // Show success message
+                    $('<div class="alert alert-success alert-dismissible fade show" role="alert">' +
+                      'All settings have been saved successfully!' +
+                      '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                      '</div>').insertAfter('.d-sm-flex');
+                    
+                    // Reset button
+                    $('#saveAllSettings').html('<i class="fas fa-save me-2"></i>Save All Changes');
+                    $('#saveAllSettings').prop('disabled', false);
+                }, 1500);
+            });
+        });
+    </script>
+} 

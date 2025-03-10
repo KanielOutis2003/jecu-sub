@@ -1,0 +1,219 @@
+@{
+    ViewData["Title"] = "Service Requests";
+    Layout = "_HomeownerLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Service Requests</h1>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createRequestModal">
+            <i class="fas fa-plus me-2"></i> New Request
+        </button>
+    </div>
+
+    <!-- Service Request Categories -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Categories</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="category-card text-center p-3 border rounded">
+                                <i class="fas fa-wrench fa-2x mb-2 text-primary"></i>
+                                <h5>Maintenance</h5>
+                                <p class="mb-0 text-muted">General repairs and upkeep</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="category-card text-center p-3 border rounded">
+                                <i class="fas fa-shield-alt fa-2x mb-2 text-danger"></i>
+                                <h5>Security</h5>
+                                <p class="mb-0 text-muted">Safety concerns</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="category-card text-center p-3 border rounded">
+                                <i class="fas fa-leaf fa-2x mb-2 text-success"></i>
+                                <h5>Landscaping</h5>
+                                <p class="mb-0 text-muted">Garden and grounds</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="category-card text-center p-3 border rounded">
+                                <i class="fas fa-trash-alt fa-2x mb-2 text-info"></i>
+                                <h5>Sanitation</h5>
+                                <p class="mb-0 text-muted">Waste management</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Requests -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 font-weight-bold text-primary">My Requests</h6>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown">
+                            Filter By Status
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">All</a></li>
+                            <li><a class="dropdown-item" href="#">Pending</a></li>
+                            <li><a class="dropdown-item" href="#">In Progress</a></li>
+                            <li><a class="dropdown-item" href="#">Completed</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>Last Update</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Sample Request -->
+                                <tr>
+                                    <td>#SR001</td>
+                                    <td>Fix street light</td>
+                                    <td>Maintenance</td>
+                                    <td><span class="badge bg-warning">In Progress</span></td>
+                                    <td>Mar 10, 2024</td>
+                                    <td>Mar 11, 2024</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info me-1" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-primary" title="Add Comment">
+                                            <i class="fas fa-comment"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Request Modal -->
+<div class="modal fade" id="createRequestModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Service Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="createRequestForm">
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" required>
+                            <option value="">Select category</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="security">Security</option>
+                            <option value="landscaping">Landscaping</option>
+                            <option value="sanitation">Sanitation</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Priority</label>
+                        <select class="form-select">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" rows="5" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="submitRequest()">Submit Request</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function submitRequest() {
+            const form = document.getElementById('createRequestForm');
+            const title = form.querySelector('input[type="text"]').value;
+            const category = form.querySelector('select').value;
+            const priority = form.querySelectorAll('select')[1].value;
+            const description = form.querySelector('textarea').value;
+
+            if (!title || !category || !description) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            fetch('/Homeowner/CreateServiceRequest', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    title: title,
+                    category: category,
+                    priority: priority,
+                    description: description
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    location.reload();
+                } else {
+                    alert('Error creating service request');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error creating service request');
+            });
+        }
+    </script>
+}
+
+@section Styles {
+    <style>
+        .category-card {
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+    </style>
+} 

@@ -54,8 +54,8 @@
 
 #sidebar ul li.active > a {
     color: #fff;
-    background: rgba(0, 0, 0, 0.1);
-    border-left: 4px solid #AFD275;
+    background: rgba(255, 255, 255, 0.2);
+    border-left: 4px solid #fff;
 }
 
 #sidebar ul li a i {
@@ -65,51 +65,47 @@
 }
 
 #sidebar .collapse {
-    background: rgba(0, 0, 0, 0.05);
+    margin-left: 20px;
 }
 
 #sidebar .collapse a {
-    padding-left: 50px;
-    font-size: 0.9rem;
+    padding: 8px 15px;
 }
 
 #content {
     width: calc(100% - 250px);
-    padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
-    background-color: #F8F8F8;
-    margin-left: 250px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 #content.active {
     width: 100%;
-    margin-left: 0;
 }
 
 .card {
-    margin-bottom: 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    border-radius: 12px;
     border: none;
-    overflow: hidden;
-    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    margin-bottom: 1.5rem;
 }
 
 .card-header {
-    background-color: #F2EBE9;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 1.25rem 1.5rem;
+    background-color: #f8f9fc;
+    border-bottom: 1px solid #e3e6f0;
+    padding: 1rem;
 }
 
 .card-body {
-    padding: 1.5rem;
+    padding: 1.25rem;
 }
 
 .card-footer {
-    background-color: #F2EBE9;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 1.25rem 1.5rem;
+    background-color: #f8f9fc;
+    border-top: 1px solid #e3e6f0;
+    padding: 1rem;
 }
 
 .border-left-primary {
@@ -117,15 +113,15 @@
 }
 
 .border-left-success {
-    border-left: 0.25rem solid #AFD275 !important;
+    border-left: 0.25rem solid #7E685A !important;
 }
 
 .border-left-info {
-    border-left: 0.25rem solid #C2CAD0 !important;
+    border-left: 0.25rem solid #AFD275 !important;
 }
 
 .border-left-warning {
-    border-left: 0.25rem solid #C2B9B0 !important;
+    border-left: 0.25rem solid #C2CAD0 !important;
 }
 
 .dropdown-menu {

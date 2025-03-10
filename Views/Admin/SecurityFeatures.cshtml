@@ -1,0 +1,309 @@
+@{
+    ViewData["Title"] = "Security Features";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Security Features</h1>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Security Features Tabs -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <ul class="nav nav-tabs card-header-tabs" id="securityTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="visitor-tab" data-bs-toggle="tab" href="#visitor" role="tab">
+                        <i class="fas fa-id-card me-2"></i>Visitor Passes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="vehicle-tab" data-bs-toggle="tab" href="#vehicle" role="tab">
+                        <i class="fas fa-car me-2"></i>Vehicle Registration
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="emergency-tab" data-bs-toggle="tab" href="#emergency" role="tab">
+                        <i class="fas fa-phone-alt me-2"></i>Emergency Contacts
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="securityTabContent">
+                <!-- Visitor Passes Tab -->
+                <div class="tab-pane fade show active" id="visitor" role="tabpanel">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Visitor Pass Management</h5>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createVisitorPassModal">
+                            <i class="fas fa-plus me-2"></i>Create Visitor Pass
+                        </button>
+                    </div>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i> No visitor passes have been created yet. Visitor passes will appear here once homeowners start requesting them.
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="visitorPassTable">
+                            <thead>
+                                <tr>
+                                    <th>Pass ID</th>
+                                    <th>Visitor Name</th>
+                                    <th>Host</th>
+                                    <th>Purpose</th>
+                                    <th>Valid From</th>
+                                    <th>Valid Until</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- No data to display -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Vehicle Registration Tab -->
+                <div class="tab-pane fade" id="vehicle" role="tabpanel">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Vehicle Registration</h5>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerVehicleModal">
+                            <i class="fas fa-plus me-2"></i>Register Vehicle
+                        </button>
+                    </div>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i> No vehicles have been registered yet. Vehicle registrations will appear here once homeowners start registering their vehicles.
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="vehicleTable">
+                            <thead>
+                                <tr>
+                                    <th>Registration ID</th>
+                                    <th>Owner</th>
+                                    <th>Vehicle Type</th>
+                                    <th>Make/Model</th>
+                                    <th>Plate Number</th>
+                                    <th>Color</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- No data to display -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Emergency Contacts Tab -->
+                <div class="tab-pane fade" id="emergency" role="tabpanel">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Emergency Contact Directory</h5>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmergencyContactModal">
+                            <i class="fas fa-plus me-2"></i>Add Emergency Contact
+                        </button>
+                    </div>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i> No emergency contacts have been added yet. Use the "Add Emergency Contact" button to add important contacts.
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="emergencyContactTable">
+                            <thead>
+                                <tr>
+                                    <th>Department</th>
+                                    <th>Contact Person</th>
+                                    <th>Primary Phone</th>
+                                    <th>Secondary Phone</th>
+                                    <th>Email</th>
+                                    <th>Available Hours</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- No data to display -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Visitor Pass Modal -->
+<div class="modal fade" id="createVisitorPassModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Visitor Pass</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Visitor Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Host (Homeowner)</label>
+                        <select class="form-select" required>
+                            <option value="">Select homeowner</option>
+                            <option value="1">John Smith</option>
+                            <option value="2">Sarah Johnson</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Purpose of Visit</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Valid From</label>
+                            <input type="datetime-local" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Valid Until</label>
+                            <input type="datetime-local" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Vehicle Details (Optional)</label>
+                        <input type="text" class="form-control" placeholder="Plate Number">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Notes</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Create Pass</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Register Vehicle Modal -->
+<div class="modal fade" id="registerVehicleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Register Vehicle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Owner (Homeowner)</label>
+                        <select class="form-select" required>
+                            <option value="">Select homeowner</option>
+                            <option value="1">John Smith</option>
+                            <option value="2">Sarah Johnson</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Vehicle Type</label>
+                        <select class="form-select" required>
+                            <option value="car">Car</option>
+                            <option value="motorcycle">Motorcycle</option>
+                            <option value="truck">Truck</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Make/Model</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Plate Number</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Color</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Year</label>
+                        <input type="number" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">RFID/Sticker Number</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Register Vehicle</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Emergency Contact Modal -->
+<div class="modal fade" id="addEmergencyContactModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Emergency Contact</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Department/Service</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Contact Person</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Primary Phone</label>
+                        <input type="tel" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Secondary Phone</label>
+                        <input type="tel" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Available Hours</label>
+                        <input type="text" class="form-control" placeholder="e.g., 24/7, 8AM-5PM Mon-Fri">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Additional Information</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Add Contact</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#visitorPassTable').DataTable({
+                "order": [[4, "desc"]]
+            });
+            $('#vehicleTable').DataTable();
+            $('#emergencyContactTable').DataTable();
+        });
+    </script>
+} 
