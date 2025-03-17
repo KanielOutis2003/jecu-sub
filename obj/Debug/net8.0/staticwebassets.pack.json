@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\images\\facilities\\admin logo.jpg"
     },
     {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\facilities\\clubhouse.jpg",
+      "PackagePath": "staticwebassets\\images\\facilities\\clubhouse.jpg"
+    },
+    {
       "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\facilities\\default-court.jpg",
       "PackagePath": "staticwebassets\\images\\facilities\\default-court.jpg"
     },
@@ -73,8 +77,8 @@
       "PackagePath": "staticwebassets\\images\\logo\\admin-logo.png"
     },
     {
-      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\profile\\default-profile.png",
-      "PackagePath": "staticwebassets\\images\\profile\\default-profile.png"
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\images\\profile\\deafult-profile.png",
+      "PackagePath": "staticwebassets\\images\\profile\\deafult-profile.png"
     },
     {
       "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\img\\default-profile.png",
@@ -331,6 +335,22 @@
     {
       "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\facilities\\638770821785681688_COMMUNITY CENTER.jpg",
       "PackagePath": "staticwebassets\\uploads\\facilities\\638770821785681688_COMMUNITY CENTER.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\facilities\\638778498755510545_default-pool.jpg",
+      "PackagePath": "staticwebassets\\uploads\\facilities\\638778498755510545_default-pool.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\facilities\\638778501968235161_COMMUNITY CENTER.jpg",
+      "PackagePath": "staticwebassets\\uploads\\facilities\\638778501968235161_COMMUNITY CENTER.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\facilities\\638778503227092582_default-playground.jpg",
+      "PackagePath": "staticwebassets\\uploads\\facilities\\638778503227092582_default-playground.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\facilities\\638778504241674444_default-gym.jpg",
+      "PackagePath": "staticwebassets\\uploads\\facilities\\638778504241674444_default-gym.jpg"
     },
     {
       "Id": "C:\\Users\\jecu2\\Desktop\\SUB\\jecu-sub\\wwwroot\\uploads\\profiles\\a9bf1126-f3d4-4d88-a519-9d788dd3bd80_638772435445227960.jpg",

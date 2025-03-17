@@ -168,6 +168,28 @@ public class HomeController : Controller
         return View();
     }
 
+    // GET: Home/AdminDashboard
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> AdminDashboard()
+    {
+        // Get existing dashboard data
+        
+        // Add pending reservations data
+        var pendingReservations = await _context.FacilityReservations
+            .Where(r => r.Status == ReservationStatus.Pending)
+            .OrderByDescending(r => r.CreatedAt)
+            .Include(r => r.Facility)
+            .Include(r => r.User)
+            .Take(5) // Show only the 5 most recent pending reservations
+            .ToListAsync();
+            
+        ViewBag.PendingReservations = pendingReservations;
+        
+        // Continue with the rest of the dashboard data
+        
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

@@ -155,14 +155,15 @@ namespace SubdivisionWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<string>("CreatedAt")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsVisible")
+                    b.Property<int>("IsVisible")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Module")
@@ -183,7 +184,7 @@ namespace SubdivisionWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<string>("UpdatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
@@ -198,7 +199,7 @@ namespace SubdivisionWebsite.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ActivityLogs");
+                    b.ToTable("ActivityLogs", (string)null);
                 });
 
             modelBuilder.Entity("SubdivisionWebsite.Models.Announcement", b =>
@@ -211,14 +212,15 @@ namespace SubdivisionWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<string>("CreatedAt")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("CreatedById")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<int>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
@@ -229,7 +231,7 @@ namespace SubdivisionWebsite.Migrations
 
                     b.HasIndex("CreatedById");
 
-                    b.ToTable("Announcements");
+                    b.ToTable("Announcements", (string)null);
                 });
 
             modelBuilder.Entity("SubdivisionWebsite.Models.AnnouncementRead", b =>
@@ -240,14 +242,15 @@ namespace SubdivisionWebsite.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("ReadAt")
+                    b.Property<string>("ReadAt")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("AnnouncementId", "UserId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AnnouncementReads");
+                    b.ToTable("AnnouncementReads", (string)null);
                 });
 
             modelBuilder.Entity("SubdivisionWebsite.Models.ApplicationUser", b =>
@@ -274,7 +277,7 @@ namespace SubdivisionWebsite.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("EmailConfirmed")
+                    b.Property<int>("EmailConfirmed")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FirstName")
@@ -285,10 +288,10 @@ namespace SubdivisionWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("LockoutEnabled")
+                    b.Property<int>("LockoutEnabled")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTimeOffset?>("LockoutEnd")
+                    b.Property<string>("LockoutEnd")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LotNumber")
@@ -309,13 +312,14 @@ namespace SubdivisionWebsite.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("PhoneNumberConfirmed")
+                    b.Property<int>("PhoneNumberConfirmed")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ProfilePicture")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("RegistrationDate")
+                    b.Property<string>("RegistrationDate")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SecurityStamp")
@@ -324,7 +328,7 @@ namespace SubdivisionWebsite.Migrations
                     b.Property<string>("StaffRole")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("TwoFactorEnabled")
+                    b.Property<int>("TwoFactorEnabled")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserName")
@@ -365,16 +369,16 @@ namespace SubdivisionWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("FileSize")
+                    b.Property<int>("FileSize")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FileType")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsPublic")
+                    b.Property<int>("IsPublic")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("LastUpdatedAt")
+                    b.Property<string>("LastUpdatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastUpdatedById")
@@ -384,7 +388,8 @@ namespace SubdivisionWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("UploadedAt")
+                    b.Property<string>("UploadedAt")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UploadedById")
@@ -400,7 +405,7 @@ namespace SubdivisionWebsite.Migrations
 
                     b.HasIndex("UploadedById");
 
-                    b.ToTable("Documents");
+                    b.ToTable("Documents", (string)null);
                 });
 
             modelBuilder.Entity("SubdivisionWebsite.Models.Event", b =>
@@ -412,7 +417,8 @@ namespace SubdivisionWebsite.Migrations
                     b.Property<string>("Color")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<string>("CreatedAt")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("CreatedById")
@@ -423,17 +429,17 @@ namespace SubdivisionWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("EndDate")
+                    b.Property<string>("EndDate")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<TimeSpan?>("EndTime")
+                    b.Property<string>("EndTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsAllDay")
+                    b.Property<int>("IsAllDay")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("LastUpdatedAt")
+                    b.Property<string>("LastUpdatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastUpdatedById")
@@ -442,10 +448,12 @@ namespace SubdivisionWebsite.Migrations
                     b.Property<string>("Location")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<string>("StartDate")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<TimeSpan>("StartTime")
+                    b.Property<string>("StartTime")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
@@ -458,7 +466,7 @@ namespace SubdivisionWebsite.Migrations
 
                     b.HasIndex("LastUpdatedById");
 
-                    b.ToTable("Events");
+                    b.ToTable("Events", (string)null);
                 });
 
             modelBuilder.Entity("SubdivisionWebsite.Models.EventAttendee", b =>
@@ -472,10 +480,11 @@ namespace SubdivisionWebsite.Migrations
                     b.Property<int?>("EventId1")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsAttending")
+                    b.Property<int>("IsAttending")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("RespondedAt")
+                    b.Property<string>("RespondedAt")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("EventId", "UserId");
@@ -484,7 +493,7 @@ namespace SubdivisionWebsite.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("EventAttendees");
+                    b.ToTable("EventAttendees", (string)null);
                 });
 
             modelBuilder.Entity("SubdivisionWebsite.Models.Facility", b =>
@@ -496,7 +505,8 @@ namespace SubdivisionWebsite.Migrations
                     b.Property<int>("Capacity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<TimeSpan>("ClosingTime")
+                    b.Property<string>("ClosingTime")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
@@ -506,7 +516,7 @@ namespace SubdivisionWebsite.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<int>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Location")
@@ -517,15 +527,16 @@ namespace SubdivisionWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<TimeSpan>("OpeningTime")
+                    b.Property<string>("OpeningTime")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal?>("ReservationFee")
+                    b.Property<string>("ReservationFee")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Facilities");
+                    b.ToTable("Facilities", (string)null);
                 });
 
             modelBuilder.Entity("SubdivisionWebsite.Models.FacilityReservation", b =>
@@ -534,19 +545,21 @@ namespace SubdivisionWebsite.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal?>("AmountPaid")
+                    b.Property<string>("AmountPaid")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("ApprovedAt")
+                    b.Property<string>("ApprovedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ApprovedById")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<string>("CreatedAt")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<TimeSpan>("EndTime")
+                    b.Property<string>("EndTime")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("ExpectedAttendees")
@@ -558,10 +571,10 @@ namespace SubdivisionWebsite.Migrations
                     b.Property<int?>("FacilityId1")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsPaid")
+                    b.Property<int>("IsPaid")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("PaymentDate")
+                    b.Property<string>("PaymentDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PaymentReference")
@@ -574,10 +587,12 @@ namespace SubdivisionWebsite.Migrations
                     b.Property<string>("RejectionReason")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("ReservationDate")
+                    b.Property<string>("ReservationDate")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<TimeSpan>("StartTime")
+                    b.Property<string>("StartTime")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Status")
@@ -597,7 +612,7 @@ namespace SubdivisionWebsite.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("FacilityReservations");
+                    b.ToTable("FacilityReservations", (string)null);
                 });
 
             modelBuilder.Entity("SubdivisionWebsite.Models.Notification", b =>
@@ -609,32 +624,33 @@ namespace SubdivisionWebsite.Migrations
                     b.Property<string>("ActionUrl")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<string>("CreatedAt")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("EmailSentAt")
+                    b.Property<string>("EmailSentAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsEmailSent")
+                    b.Property<int>("IsEmailSent")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsRead")
+                    b.Property<int>("IsRead")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsSMSSent")
+                    b.Property<int>("IsSMSSent")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("ReadAt")
+                    b.Property<string>("ReadAt")
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("ReferenceId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("SMSSentAt")
+                    b.Property<string>("SMSSentAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
@@ -652,7 +668,7 @@ namespace SubdivisionWebsite.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Notifications");
+                    b.ToTable("Notifications", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -1,10 +1,12 @@
 /* Hero Section */
 .hero-section {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80');
+                url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80');
     /* Alternative background URLs you can use:
     https://images.unsplash.com/photo-1600596542815-ffad4c1539a9
     https://images.unsplash.com/photo-1600585154526-990dced4db0d
+    https://images.unsplash.com/photo-1582407947304-fd86f028f716 (modern house with motion blur)
+    https://images.unsplash.com/photo-1570129477492-45c003edd2be (houses with dynamic perspective)
     */
     background-size: cover;
     background-position: center;
@@ -16,6 +18,26 @@
     margin-top: -1rem;
     background-attachment: fixed;
     position: relative;
+    animation: movingBackground 20s ease-in-out infinite alternate;
+    overflow: hidden;
+}
+
+@keyframes movingBackground {
+    0% {
+        background-position: center;
+    }
+    25% {
+        background-position: right center;
+    }
+    50% {
+        background-position: center bottom;
+    }
+    75% {
+        background-position: left center;
+    }
+    100% {
+        background-position: center top;
+    }
 }
 
 /* Add an overlay animation */
@@ -28,6 +50,19 @@
     bottom: 0;
     background: linear-gradient(45deg, rgba(231, 113, 125, 0.3), rgba(126, 104, 90, 0.3));
     pointer-events: none;
+    animation: colorShift 15s ease infinite alternate;
+}
+
+@keyframes colorShift {
+    0% {
+        background: linear-gradient(45deg, rgba(231, 113, 125, 0.3), rgba(126, 104, 90, 0.3));
+    }
+    50% {
+        background: linear-gradient(45deg, rgba(126, 104, 90, 0.3), rgba(231, 113, 125, 0.3));
+    }
+    100% {
+        background: linear-gradient(45deg, rgba(231, 113, 125, 0.3), rgba(126, 104, 90, 0.3));
+    }
 }
 
 .hero-content {

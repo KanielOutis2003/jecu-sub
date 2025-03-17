@@ -6,74 +6,156 @@
 }
 
 <div class="container py-4">
-    <div class="row">
-        <div class="col-md-8 mx-auto">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Reserve @(facility?.Name ?? "Facility")</h4>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-0 rounded-lg">
+                <div class="card-header bg-gradient-primary text-white text-center py-4">
+                    <h3 class="mb-0 fw-bold">Reserve Facility</h3>
+                    <p class="small mb-0">Request a reservation for @facility?.Name</p>
                 </div>
-                <div class="card-body">
-                    <form asp-action="Reserve" method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card-body p-4">
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i> @TempData["ErrorMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <div class="text-center">
+                                @if (!string.IsNullOrEmpty(facility?.ImageUrl))
+                                {
+                                    <img src="@facility.ImageUrl" alt="@facility.Name" class="img-fluid rounded mb-2" style="max-height: 150px; width: auto;">
+                                }
+                                else
+                                {
+                                    <img src="/images/facilities/default-facility.jpg" alt="@facility?.Name" class="img-fluid rounded mb-2" style="max-height: 150px; width: auto;">
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h4>@facility?.Name</h4>
+                            <p class="mb-1"><i class="fas fa-map-marker-alt me-1 text-muted"></i> @facility?.Location</p>
+                            <p class="mb-1"><i class="fas fa-users me-1 text-muted"></i> Capacity: @facility?.Capacity people</p>
+                            <p class="mb-1"><i class="fas fa-clock me-1 text-muted"></i> Hours: @($"{facility?.OpeningTime.Hours:D2}:{facility?.OpeningTime.Minutes:D2}") - @($"{facility?.ClosingTime.Hours:D2}:{facility?.ClosingTime.Minutes:D2}")</p>
+                            
+                            @if (facility?.ReservationFee > 0)
+                            {
+                                <p class="mb-0"><i class="fas fa-money-bill-wave me-1 text-muted"></i> Reservation Fee: ₱@facility?.ReservationFee.Value.ToString("N2")</p>
+                            }
+                            else
+                            {
+                                <p class="mb-0"><i class="fas fa-money-bill-wave me-1 text-muted"></i> No reservation fee</p>
+                            }
+                        </div>
+                    </div>
+                    
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger">
+                            <h5 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i> Please fix the following errors:</h5>
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <ul>
+                                @foreach (var modelState in ViewData.ModelState.Values)
+                                {
+                                    foreach (var error in modelState.Errors)
+                                    {
+                                        <li>@error.ErrorMessage</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    }
+                    
+                    <form id="reservationForm" asp-action="Reserve" method="post">
                         <input type="hidden" asp-for="FacilityId" />
-
+                        
                         <div class="row mb-3">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="ReservationDate" class="control-label">Date</label>
-                                    <input asp-for="ReservationDate" class="form-control" type="date" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="ReservationDate" class="form-control" type="date" min="@DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")" required />
+                                    <label asp-for="ReservationDate">Reservation Date</label>
                                     <span asp-validation-for="ReservationDate" class="text-danger"></span>
+                                    <small class="form-text text-muted">Reservations must be made at least 1 day in advance</small>
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="StartTime" class="control-label">Start Time</label>
-                                    <input asp-for="StartTime" class="form-control" type="time" min="@(facility?.OpeningTime.ToString(@"hh\:mm") ?? "08:00")" max="@(facility?.ClosingTime.ToString(@"hh\:mm") ?? "22:00")" />
+                                <div class="form-floating mb-3">
+                                    <input asp-for="StartTime" class="form-control" type="time" min="@($"{facility?.OpeningTime.Hours:D2}:{facility?.OpeningTime.Minutes:D2}")" max="@($"{facility?.ClosingTime.Hours:D2}:{facility?.ClosingTime.Minutes:D2}")" required />
+                                    <label asp-for="StartTime">Start Time</label>
                                     <span asp-validation-for="StartTime" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="EndTime" class="control-label">End Time</label>
-                                    <input asp-for="EndTime" class="form-control" type="time" min="@(facility?.OpeningTime.ToString(@"hh\:mm") ?? "08:00")" max="@(facility?.ClosingTime.ToString(@"hh\:mm") ?? "22:00")" />
+                                <div class="form-floating mb-3">
+                                    <input asp-for="EndTime" class="form-control" type="time" min="@($"{facility?.OpeningTime.Hours:D2}:{facility?.OpeningTime.Minutes:D2}")" max="@($"{facility?.ClosingTime.Hours:D2}:{facility?.ClosingTime.Minutes:D2}")" required />
+                                    <label asp-for="EndTime">End Time</label>
                                     <span asp-validation-for="EndTime" class="text-danger"></span>
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <small class="form-text text-muted">
+                                    Available hours: @($"{facility?.OpeningTime.Hours:D2}:{facility?.OpeningTime.Minutes:D2}") - @($"{facility?.ClosingTime.Hours:D2}:{facility?.ClosingTime.Minutes:D2}")
+                                </small>
+                            </div>
                         </div>
-
-                        <div class="form-group mb-3">
-                            <label asp-for="Purpose" class="control-label">Purpose of Reservation</label>
-                            <textarea asp-for="Purpose" class="form-control" rows="3"></textarea>
+                        
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="Purpose" class="form-control" placeholder="Enter purpose" style="height: 100px" required></textarea>
+                            <label asp-for="Purpose">Purpose of Reservation</label>
                             <span asp-validation-for="Purpose" class="text-danger"></span>
                         </div>
-
-                        <div class="form-group mb-3">
-                            <label asp-for="ExpectedAttendees" class="control-label">Expected Number of Attendees</label>
-                            <input asp-for="ExpectedAttendees" class="form-control" type="number" min="1" max="@(facility?.Capacity ?? 100)" />
-                            <span asp-validation-for="ExpectedAttendees" class="text-danger"></span>
-                            <small class="form-text text-muted">Maximum capacity: @(facility?.Capacity ?? 100) people</small>
-                        </div>
-
-                        @if (facility?.ReservationFee != null && facility.ReservationFee.Value > 0)
+                        
+                        @if (facility?.ReservationFee > 0)
                         {
-                            <div class="alert alert-info">
-                                <i class="fas fa-info-circle"></i> This facility has a reservation fee of @facility.ReservationFee.Value.ToString("C"). Payment details will be provided after your reservation is approved.
+                            <div class="alert alert-info mb-3">
+                                <i class="fas fa-info-circle me-2"></i> This facility has a reservation fee of ₱@facility?.ReservationFee.Value.ToString("N2"). Payment details will be provided after your reservation is approved.
                             </div>
                         }
-
-                        <div class="form-group mt-4">
-                            <button type="submit" class="btn btn-success">
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary me-md-2">
+                                <i class="fas fa-arrow-left"></i> Back to Facilities
+                            </a>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmReservationModal">
                                 <i class="fas fa-calendar-check"></i> Submit Reservation
                             </button>
-                            <a asp-action="Details" asp-route-id="@Model.FacilityId" class="btn btn-outline-secondary">
-                                <i class="fas fa-times"></i> Cancel
-                            </a>
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reservation Confirmation Modal -->
+<div class="modal fade" id="confirmReservationModal" tabindex="-1" aria-labelledby="confirmReservationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="confirmReservationModalLabel">Confirm Reservation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to submit this reservation request for <strong>@facility?.Name</strong>?</p>
+                
+                @if (facility?.ReservationFee > 0)
+                {
+                    <div class="alert alert-info mb-0">
+                        <i class="fas fa-info-circle me-2"></i> This facility has a reservation fee of ₱@facility?.ReservationFee.Value.ToString("N2"). Payment details will be provided after your reservation is approved.
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmReservationBtn">
+                    <i class="fas fa-calendar-check"></i> Submit Reservation
+                </button>
             </div>
         </div>
     </div>
@@ -84,7 +166,38 @@
     
     <script>
         $(document).ready(function () {
-            // Add date/time validation if needed
+            // Validate form before showing modal
+            $('[data-bs-target="#confirmReservationModal"]').click(function(e) {
+                e.preventDefault();
+                
+                // Clear any previous error messages
+                $(".validation-summary-valid").empty();
+                
+                // Validate start and end times
+                var startTime = $("#StartTime").val();
+                var endTime = $("#EndTime").val();
+                
+                if (startTime >= endTime) {
+                    $(".validation-summary-valid")
+                        .removeClass("validation-summary-valid")
+                        .addClass("validation-summary-errors")
+                        .html("<ul><li>Start time must be before end time</li></ul>");
+                    return false;
+                }
+                
+                // Validate form 
+                if ($("#reservationForm")[0].checkValidity()) {
+                    $("#confirmReservationModal").modal('show');
+                } else {
+                    // Trigger browser's native validation
+                    $("#reservationForm")[0].reportValidity();
+                }
+            });
+            
+            // Submit form when confirmed
+            $("#confirmReservationBtn").click(function() {
+                $("#reservationForm").submit();
+            });
         });
     </script>
 } 

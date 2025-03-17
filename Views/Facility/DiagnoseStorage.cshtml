@@ -1,0 +1,139 @@
+@model Dictionary<string, object>
+
+@{
+    ViewData["Title"] = "Storage Diagnostics";
+}
+
+<div class="container py-4">
+    <div class="card shadow border-0 rounded-lg">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Storage Diagnostics</h3>
+            <p class="small mb-0">This page helps diagnose file system access issues that might affect facility creation</p>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-3">Directory Status</h4>
+            
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Path</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Web Root Directory</td>
+                            <td>@Model["WebRootPath"]</td>
+                            <td>
+                                @if ((bool)Model["WebRootExists"])
+                                {
+                                    <span class="badge bg-success">Exists</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Missing</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Uploads Directory</td>
+                            <td>@Model["UploadsPath"]</td>
+                            <td>
+                                @if ((bool)Model["UploadsExists"])
+                                {
+                                    <span class="badge bg-success">Exists</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Missing</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Facilities Uploads Directory</td>
+                            <td>@Model["FacilitiesUploadsPath"]</td>
+                            <td>
+                                @if ((bool)Model["FacilitiesUploadsExists"])
+                                {
+                                    <span class="badge bg-success">Exists</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Missing</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Images Directory</td>
+                            <td>@Model["ImagesPath"]</td>
+                            <td>
+                                @if ((bool)Model["ImagesExists"])
+                                {
+                                    <span class="badge bg-success">Exists</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Missing</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Facilities Images Directory</td>
+                            <td>@Model["FacilitiesImagesPath"]</td>
+                            <td>
+                                @if ((bool)Model["FacilitiesImagesExists"])
+                                {
+                                    <span class="badge bg-success">Exists</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Missing</span>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h4 class="mb-3 mt-4">Write Access Test</h4>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Write Access to Facilities Uploads Directory</h5>
+                    
+                    @if ((bool)Model["CanWriteToFacilitiesUploads"])
+                    {
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle me-2"></i> The application can write files to the facilities uploads directory.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-circle me-2"></i> The application cannot write files to the facilities uploads directory.
+                            <hr>
+                            <p><strong>Error Message:</strong> @Model["WriteErrorMessage"]</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            
+            <div class="alert alert-info mt-4">
+                <i class="fas fa-info-circle me-2"></i> <strong>Troubleshooting:</strong> 
+                If any of the directories are missing, the application will attempt to create them at runtime. 
+                If write access fails, please ensure that the application has appropriate permissions to write to these directories.
+            </div>
+            
+            <div class="mt-4">
+                <a asp-action="Create" class="btn btn-outline-primary me-2">
+                    <i class="fas fa-plus"></i> Try Create Facility
+                </a>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Facilities
+                </a>
+            </div>
+        </div>
+    </div>
+</div> 

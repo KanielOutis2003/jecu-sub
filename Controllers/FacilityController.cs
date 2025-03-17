@@ -110,37 +110,96 @@ namespace SubdivisionWebsite.Controllers
                 "Other"
             };
             
+            // Log the received facility data for debugging
+            System.Diagnostics.Debug.WriteLine($"Received Facility: Name={facility.Name}, Description={facility.Description?.Length ?? 0} chars, Location={facility.Location}");
+            System.Diagnostics.Debug.WriteLine($"OpeningTime={facility.OpeningTime}, ClosingTime={facility.ClosingTime}, Capacity={facility.Capacity}, ReservationFee={facility.ReservationFee}");
+            
+            // Validate required fields explicitly
+            if (string.IsNullOrWhiteSpace(facility.Name))
+            {
+                ModelState.AddModelError("Name", "Facility name is required");
+                System.Diagnostics.Debug.WriteLine("Validation Error: Missing Name");
+            }
+            
+            if (string.IsNullOrWhiteSpace(facility.Description))
+            {
+                ModelState.AddModelError("Description", "Description is required");
+                System.Diagnostics.Debug.WriteLine("Validation Error: Missing Description");
+            }
+            
+            if (string.IsNullOrWhiteSpace(facility.Location))
+            {
+                ModelState.AddModelError("Location", "Location is required");
+                System.Diagnostics.Debug.WriteLine("Validation Error: Missing Location");
+            }
+            
+            // Log all model state errors
+            if (!ModelState.IsValid)
+            {
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Model Error: {error.ErrorMessage}");
+                    }
+                }
+            }
+            
             try
             {
                 if (ModelState.IsValid)
                 {
+                    // Set a default image url if no image is uploaded
+                    facility.ImageUrl = GetDefaultFacilityImage(facility.Name);
+                    
                     // Handle image upload if provided
                     if (facilityImage != null && facilityImage.Length > 0)
                     {
-                        // Check if the uploads directory exists, if not create it
-                        var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "facilities");
-                        if (!Directory.Exists(uploadsFolder))
+                        // Check file size (limit to 5MB)
+                        if (facilityImage.Length > 5 * 1024 * 1024)
                         {
-                            Directory.CreateDirectory(uploadsFolder);
+                            ModelState.AddModelError("facilityImage", "Image size should not exceed 5MB");
+                            return View(facility);
                         }
-
-                        // Generate unique filename
-                        var uniqueFileName = $"{DateTime.Now.Ticks}_{Path.GetFileName(facilityImage.FileName)}";
-                        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                        // Save the file
-                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        
+                        // Check file extension
+                        var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                        var extension = Path.GetExtension(facilityImage.FileName).ToLowerInvariant();
+                        if (!allowedExtensions.Contains(extension))
                         {
-                            await facilityImage.CopyToAsync(fileStream);
+                            ModelState.AddModelError("facilityImage", "Only image files (.jpg, .jpeg, .png, .gif) are allowed");
+                            return View(facility);
                         }
+                        
+                        try
+                        {
+                            // Check if the uploads directory exists, if not create it
+                            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "facilities");
+                            if (!Directory.Exists(uploadsFolder))
+                            {
+                                Directory.CreateDirectory(uploadsFolder);
+                            }
 
-                        // Set the image URL
-                        facility.ImageUrl = $"/uploads/facilities/{uniqueFileName}";
-                    }
-                    else
-                    {
-                        // Set a default image based on facility type
-                        facility.ImageUrl = GetDefaultFacilityImage(facility.Name);
+                            // Generate unique filename
+                            var uniqueFileName = $"{DateTime.Now.Ticks}_{Path.GetFileName(facilityImage.FileName)}";
+                            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                            // Save the file
+                            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                            {
+                                await facilityImage.CopyToAsync(fileStream);
+                            }
+
+                            // Set the image URL
+                            facility.ImageUrl = $"/uploads/facilities/{uniqueFileName}";
+                        }
+                        catch (Exception ex)
+                        {
+                            // Log the error but continue with default image
+                            System.Diagnostics.Debug.WriteLine($"Error uploading image: {ex.Message}");
+                            ModelState.AddModelError("facilityImage", $"Error uploading image: {ex.Message}. Using default image instead.");
+                            // Don't return here, we'll continue with the default image
+                        }
                     }
 
                     // Ensure TimeSpan values are set properly
@@ -153,24 +212,60 @@ namespace SubdivisionWebsite.Controllers
                     {
                         facility.ClosingTime = new TimeSpan(22, 0, 0); // Default to 10:00 PM
                     }
+                    
+                    // Validate that opening time is before closing time
+                    if (facility.OpeningTime >= facility.ClosingTime)
+                    {
+                        ModelState.AddModelError("OpeningTime", "Opening time must be before closing time");
+                        ModelState.AddModelError("ClosingTime", "Closing time must be after opening time");
+                        return View(facility);
+                    }
+                    
+                    // Validate capacity is reasonable
+                    if (facility.Capacity <= 0)
+                    {
+                        facility.Capacity = 50; // Set a default value if not provided or invalid
+                    }
 
-                    _context.Add(facility);
-                    await _context.SaveChangesAsync();
-                    
-                    // Create notification for all users about the new facility
-                    await CreateFacilityNotification(facility);
-                    
-                    // Add success message
-                    TempData["SuccessMessage"] = $"The facility '{facility.Name}' has been created successfully!";
-                    
-                    return RedirectToAction(nameof(Index));
+                    // Save to database
+                    try
+                    {
+                        System.Diagnostics.Debug.WriteLine("Attempting to add facility to database");
+                        _context.Add(facility);
+                        System.Diagnostics.Debug.WriteLine("Attempting to save changes to database");
+                        await _context.SaveChangesAsync();
+                        System.Diagnostics.Debug.WriteLine("Database save successful");
+                        
+                        // Create notification for all users about the new facility
+                        await CreateFacilityNotification(facility);
+                        
+                        // Add success message
+                        TempData["SuccessMessage"] = $"The facility '{facility.Name}' has been created successfully!";
+                        
+                        return RedirectToAction(nameof(Index));
+                    }
+                    catch (DbUpdateException dbEx)
+                    {
+                        var innerException = dbEx.InnerException?.Message ?? "No inner exception";
+                        System.Diagnostics.Debug.WriteLine($"Database Update Error: {dbEx.Message}");
+                        System.Diagnostics.Debug.WriteLine($"Inner Exception: {innerException}");
+                        ModelState.AddModelError("", $"Database error: {dbEx.InnerException?.Message ?? dbEx.Message}");
+                        return View(facility);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", $"Error creating facility: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"General Exception: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Stack Trace: {ex.StackTrace}");
+                ModelState.AddModelError("", $"An unexpected error occurred: {ex.Message}");
+                // Log the error
+                Console.WriteLine($"Error creating facility: {ex}");
             }
             
+            // If we got this far, something failed, redisplay form with errors
+            System.Diagnostics.Debug.WriteLine("Failed to create facility - returning to form");
+            TempData["ErrorMessage"] = "Failed to create facility. Please check the form and try again.";
             return View(facility);
         }
 
@@ -245,6 +340,75 @@ namespace SubdivisionWebsite.Controllers
             return View(facility);
         }
 
+        // GET: Facility/Delete/5
+        [Authorize(Roles = "Admin,Staff")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var facility = await _context.Facilities
+                .FirstOrDefaultAsync(m => m.Id == id);
+                
+            if (facility == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                // Check if there are any existing reservations for this facility
+                bool hasReservations = await _context.FacilityReservations
+                    .AnyAsync(r => r.FacilityId == id);
+                    
+                if (hasReservations)
+                {
+                    // Add warning message and redirect to Edit page
+                    TempData["ErrorMessage"] = "This facility cannot be deleted because it has existing reservations. You can deactivate it instead.";
+                    return RedirectToAction(nameof(Edit), new { id = id });
+                }
+                
+                // If no reservations exist, delete the facility
+                // Check if facility has an image that needs to be deleted
+                if (!string.IsNullOrEmpty(facility.ImageUrl) && 
+                    facility.ImageUrl.StartsWith("/uploads/facilities/"))
+                {
+                    try
+                    {
+                        var imagePath = Path.Combine(
+                            _webHostEnvironment.WebRootPath, 
+                            facility.ImageUrl.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
+                            
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log error but continue with deletion
+                        System.Diagnostics.Debug.WriteLine($"Error deleting facility image: {ex.Message}");
+                    }
+                }
+                
+                _context.Facilities.Remove(facility);
+                await _context.SaveChangesAsync();
+                
+                // Add success message
+                TempData["SuccessMessage"] = $"The facility '{facility.Name}' has been deleted successfully!";
+                
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                // Add error message and redirect to Edit page
+                TempData["ErrorMessage"] = $"Error deleting facility: {ex.Message}";
+                return RedirectToAction(nameof(Edit), new { id = id });
+            }
+        }
+
         // GET: Facility/Reserve/5
         [Authorize]
         public async Task<IActionResult> Reserve(int? id)
@@ -292,36 +456,94 @@ namespace SubdivisionWebsite.Controllers
 
             ViewBag.Facility = facility;
 
-            if (ModelState.IsValid)
+            try 
             {
-                // Check if the facility is available for the requested time
-                bool isAvailable = await IsFacilityAvailable(
-                    reservation.FacilityId,
-                    reservation.ReservationDate,
-                    reservation.StartTime,
-                    reservation.EndTime);
-
-                if (!isAvailable)
+                // Additional validation
+                if (reservation.ReservationDate < DateTime.Today.AddDays(1))
                 {
-                    ModelState.AddModelError("", "The facility is not available for the selected time.");
-                    return View(reservation);
+                    ModelState.AddModelError("ReservationDate", "Reservations must be made at least 1 day in advance.");
                 }
 
-                // Set the user ID
-                reservation.UserId = GetCurrentUserId();
-                reservation.CreatedAt = DateTime.UtcNow;
-                reservation.Status = ReservationStatus.Pending;
+                if (reservation.StartTime < facility.OpeningTime)
+                {
+                    ModelState.AddModelError("StartTime", $"Start time must be after facility opening time ({facility.OpeningTime.ToString("hh\\:mm tt")}).");
+                }
 
-                _context.Add(reservation);
-                await _context.SaveChangesAsync();
+                if (reservation.EndTime > facility.ClosingTime)
+                {
+                    ModelState.AddModelError("EndTime", $"End time must be before facility closing time ({facility.ClosingTime.ToString("hh\\:mm tt")}).");
+                }
 
-                // Create notification for admin/staff
-                await CreateReservationNotification(reservation);
-                
-                // Add success message
-                TempData["SuccessMessage"] = $"Your reservation request for {facility.Name} has been submitted successfully and is pending approval.";
+                if (reservation.StartTime >= reservation.EndTime)
+                {
+                    ModelState.AddModelError("StartTime", "Start time must be before end time.");
+                    ModelState.AddModelError("EndTime", "End time must be after start time.");
+                }
 
-                return RedirectToAction(nameof(MyReservations));
+                if (string.IsNullOrWhiteSpace(reservation.Purpose))
+                {
+                    ModelState.AddModelError("Purpose", "Purpose is required.");
+                }
+
+                // Check for maximum reservation duration (e.g., 8 hours)
+                var duration = reservation.EndTime - reservation.StartTime;
+                if (duration.TotalHours > 8)
+                {
+                    ModelState.AddModelError("EndTime", "Maximum reservation duration is 8 hours.");
+                }
+
+                if (ModelState.IsValid)
+                {
+                    // Check if the facility is available for the requested time
+                    bool isAvailable = await IsFacilityAvailable(
+                        reservation.FacilityId,
+                        reservation.ReservationDate,
+                        reservation.StartTime,
+                        reservation.EndTime);
+
+                    if (!isAvailable)
+                    {
+                        ModelState.AddModelError("", "The facility is not available for the selected time. Please choose a different time slot.");
+                        return View(reservation);
+                    }
+
+                    // Set the user ID and other properties
+                    reservation.UserId = GetCurrentUserId();
+                    reservation.CreatedAt = DateTime.UtcNow;
+                    reservation.Status = ReservationStatus.Pending;
+
+                    _context.Add(reservation);
+                    await _context.SaveChangesAsync();
+
+                    // Log the activity
+                    var activityLog = new ActivityLog
+                    {
+                        UserId = reservation.UserId,
+                        Module = "Facility",
+                        Action = "Reserve",
+                        Description = $"Reserved {facility.Name} for {reservation.ReservationDate.ToShortDateString()} {reservation.StartTime.ToString("hh\\:mm tt")} - {reservation.EndTime.ToString("hh\\:mm tt")}",
+                        Status = "Pending",
+                        StatusColor = "warning",
+                        RelatedEntityId = reservation.Id.ToString(),
+                        RelatedEntityType = "FacilityReservation"
+                    };
+                    _context.ActivityLogs.Add(activityLog);
+                    await _context.SaveChangesAsync();
+
+                    // Create notification for admin/staff
+                    await CreateReservationNotification(reservation);
+                    
+                    // Add success message
+                    TempData["SuccessMessage"] = $"Your reservation request for {facility.Name} has been submitted successfully and is pending approval.";
+
+                    return RedirectToAction(nameof(MyReservations));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error
+                System.Diagnostics.Debug.WriteLine($"Error creating reservation: {ex.Message}");
+                ModelState.AddModelError("", $"An error occurred while creating your reservation: {ex.Message}");
             }
 
             return View(reservation);
@@ -567,6 +789,213 @@ namespace SubdivisionWebsite.Controllers
             }
 
             await _context.SaveChangesAsync();
+        }
+        
+        // GET: Facility/DiagnoseStorage
+        [Authorize(Roles = "Admin")]
+        public IActionResult DiagnoseStorage()
+        {
+            try
+            {
+                var model = new Dictionary<string, object>();
+                
+                // Check web root path
+                model["WebRootPath"] = _webHostEnvironment.WebRootPath;
+                model["WebRootExists"] = Directory.Exists(_webHostEnvironment.WebRootPath);
+                
+                // Check uploads directory
+                var uploadsPath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+                model["UploadsPath"] = uploadsPath;
+                model["UploadsExists"] = Directory.Exists(uploadsPath);
+                
+                // Check facilities uploads directory
+                var facilitiesUploadsPath = Path.Combine(uploadsPath, "facilities");
+                model["FacilitiesUploadsPath"] = facilitiesUploadsPath;
+                model["FacilitiesUploadsExists"] = Directory.Exists(facilitiesUploadsPath);
+                
+                // Check images directory
+                var imagesPath = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                model["ImagesPath"] = imagesPath;
+                model["ImagesExists"] = Directory.Exists(imagesPath);
+                
+                // Check facilities images directory
+                var facilitiesImagesPath = Path.Combine(imagesPath, "facilities");
+                model["FacilitiesImagesPath"] = facilitiesImagesPath;
+                model["FacilitiesImagesExists"] = Directory.Exists(facilitiesImagesPath);
+                
+                // Try to create a test file in facilities uploads directory
+                var testFilePath = string.Empty;
+                var canWriteToFacilitiesUploads = false;
+                var writeErrorMessage = string.Empty;
+                
+                try
+                {
+                    if (!Directory.Exists(facilitiesUploadsPath))
+                    {
+                        Directory.CreateDirectory(facilitiesUploadsPath);
+                    }
+                    
+                    testFilePath = Path.Combine(facilitiesUploadsPath, $"test_{DateTime.Now.Ticks}.txt");
+                    System.IO.File.WriteAllText(testFilePath, "Test file for diagnostics");
+                    canWriteToFacilitiesUploads = true;
+                    
+                    // Clean up
+                    if (System.IO.File.Exists(testFilePath))
+                    {
+                        System.IO.File.Delete(testFilePath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeErrorMessage = ex.Message;
+                }
+                
+                model["CanWriteToFacilitiesUploads"] = canWriteToFacilitiesUploads;
+                model["WriteErrorMessage"] = writeErrorMessage;
+                
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                return Content($"Diagnostics error: {ex.Message}");
+            }
+        }
+
+        // GET: Facility/Debug
+        [Authorize(Roles = "Admin")]
+        public IActionResult Debug()
+        {
+            try
+            {
+                var model = new Dictionary<string, object>();
+                
+                // Get database connection details (without sensitive info)
+                var connection = _context.Database.GetDbConnection();
+                model["Database"] = connection.Database;
+                model["DataSource"] = connection.DataSource;
+                model["ConnectionState"] = connection.State.ToString();
+                
+                // Test database connection
+                bool canConnect = false;
+                string connectionError = string.Empty;
+                try
+                {
+                    _context.Database.OpenConnection();
+                    canConnect = true;
+                    _context.Database.CloseConnection();
+                }
+                catch (Exception ex)
+                {
+                    connectionError = ex.Message;
+                }
+                model["CanConnect"] = canConnect;
+                model["ConnectionError"] = connectionError;
+                
+                // Get Facility table info
+                try
+                {
+                    // Check total count
+                    model["FacilityCount"] = _context.Facilities.Count();
+                    
+                    // Get facility column names and types
+                    var facilities = new List<Dictionary<string, string>>();
+                    var facility = new Facility
+                    {
+                        Name = "[Debug] Test Facility",
+                        Description = "This is a test facility for debugging",
+                        Location = "Debug Location",
+                        Capacity = 50,
+                        IsActive = true,
+                        OpeningTime = new TimeSpan(8, 0, 0),
+                        ClosingTime = new TimeSpan(17, 0, 0),
+                        ReservationFee = 0
+                    };
+                    
+                    // Don't actually save, just get properties for debugging
+                    var properties = typeof(Facility).GetProperties();
+                    var propertyInfo = new List<Dictionary<string, string>>();
+                    
+                    foreach (var prop in properties)
+                    {
+                        var propInfo = new Dictionary<string, string>
+                        {
+                            ["Name"] = prop.Name,
+                            ["Type"] = prop.PropertyType.ToString(),
+                            ["Value"] = prop.GetValue(facility)?.ToString() ?? "null"
+                        };
+                        propertyInfo.Add(propInfo);
+                    }
+                    
+                    model["FacilityProperties"] = propertyInfo;
+                }
+                catch (Exception ex)
+                {
+                    model["FacilityTableError"] = ex.Message;
+                }
+                
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                return Content($"Debug error: {ex.Message}");
+            }
+        }
+
+        // GET: Facility/SimpleFacilityTest
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> SimpleFacilityTest()
+        {
+            try
+            {
+                // Create a simple facility with absolute bare minimum
+                var facility = new Facility();
+                
+                // Start with null values
+                System.Diagnostics.Debug.WriteLine("Simple Test - Created facility object with default values");
+                
+                // Set required values step by step
+                facility.Name = "Test Facility " + DateTime.Now.ToString("yyyyMMddHHmmss");
+                System.Diagnostics.Debug.WriteLine("Simple Test - Set Name");
+                
+                facility.Description = "This is a test facility created for debugging";
+                System.Diagnostics.Debug.WriteLine("Simple Test - Set Description");
+                
+                facility.Location = "Test Location";
+                System.Diagnostics.Debug.WriteLine("Simple Test - Set Location");
+                
+                facility.Capacity = 50;
+                System.Diagnostics.Debug.WriteLine("Simple Test - Set Capacity");
+                
+                facility.IsActive = true;
+                System.Diagnostics.Debug.WriteLine("Simple Test - Set IsActive");
+                
+                facility.OpeningTime = new TimeSpan(8, 0, 0);
+                System.Diagnostics.Debug.WriteLine("Simple Test - Set OpeningTime");
+                
+                facility.ClosingTime = new TimeSpan(17, 0, 0);
+                System.Diagnostics.Debug.WriteLine("Simple Test - Set ClosingTime");
+                
+                facility.ReservationFee = 0;
+                System.Diagnostics.Debug.WriteLine("Simple Test - Set ReservationFee");
+                
+                System.Diagnostics.Debug.WriteLine($"Simple Test - Adding facility '{facility.Name}'");
+                _context.Add(facility);
+                System.Diagnostics.Debug.WriteLine("Simple Test - Saving to database");
+                await _context.SaveChangesAsync();
+                System.Diagnostics.Debug.WriteLine("Simple Test - Save successful");
+                
+                return Content($"Test facility '{facility.Name}' created successfully with ID: {facility.Id}");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Simple Test - Error: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Simple Test - Inner Error: {ex.InnerException.Message}");
+                }
+                
+                return Content($"Error creating test facility: {ex.Message}\n\nInner exception: {ex.InnerException?.Message}");
+            }
         }
     }
 } 

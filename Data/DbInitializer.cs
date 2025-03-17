@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using SubdivisionWebsite.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace SubdivisionWebsite.Data
 {
@@ -8,10 +9,15 @@ namespace SubdivisionWebsite.Data
     {
         public static async Task Initialize(IServiceProvider serviceProvider)
         {
+            var context = serviceProvider.GetRequiredService<AppDbContext>();
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
 
+            // Ensure database is created and migrated
+            logger.LogInformation("Ensuring database exists and is up to date");
+            context.Database.EnsureCreated();
+            
             // Create roles if they don't exist
             string[] roles = { "Admin", "Staff", "Homeowner" };
             foreach (var role in roles)

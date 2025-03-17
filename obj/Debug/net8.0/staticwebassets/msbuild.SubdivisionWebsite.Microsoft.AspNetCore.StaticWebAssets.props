@@ -48,8 +48,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>dbmlt6qck1</Fingerprint>
-      <Integrity>ORkxXg79mXMwvMCdNaSuSdvje1RFef6o+67NeAl6ZpY=</Integrity>
+      <Fingerprint>o9g31lgviy</Fingerprint>
+      <Integrity>5LX/EsdEAY3pIeXyhoKs0A4uqDQUWF8OE6srn/iAou4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\home.css'))</OriginalItemSpec>
@@ -66,8 +66,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>p6tjfdh0pe</Fingerprint>
-      <Integrity>ge2Z+uaGvp8f9ClgZLEWQMvOaDy4DqW3lH56f9fvvog=</Integrity>
+      <Fingerprint>ydk3nlyrqo</Fingerprint>
+      <Integrity>9lT6n3MmyEB7J4wiXt5whVghQ0ch2A/zxp+lB01v5w8=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
@@ -126,6 +126,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\facilities\admin logo.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\facilities\clubhouse.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SubdivisionWebsite</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SubdivisionWebsite</BasePath>
+      <RelativePath>images/facilities/clubhouse.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>dkuwxf3qdv</Fingerprint>
+      <Integrity>vW+NJ6M/2QsYUd3hOZWDzdS33fcYz/zbPMsT8ScrdiI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\facilities\clubhouse.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\facilities\COMMUNITY CENTER.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>SubdivisionWebsite</SourceId>
@@ -174,8 +192,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ft1ylhflsk</Fingerprint>
-      <Integrity>TXmvElhTO/745UpTHicSxPohcyN0cl0IQryeDgtkA3I=</Integrity>
+      <Fingerprint>11ixtnkvz5</Fingerprint>
+      <Integrity>hdKhO7LU7HdMuOBv/NnVSq8trrloavAoIceuROjCKRo=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\facilities\default-facility.jpg'))</OriginalItemSpec>
@@ -192,8 +210,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>pyf74evlhe</Fingerprint>
-      <Integrity>kfhX3YFHPMsuOjp3uiaaL7J9xOa9j7bONTmw40qV0s0=</Integrity>
+      <Fingerprint>qu4xi52ykk</Fingerprint>
+      <Integrity>0rxALgBhyS0VzHpBRF1VgMCCXby0iIZAk4j7B/Xau2I=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\facilities\default-gym.jpg'))</OriginalItemSpec>
@@ -246,8 +264,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>0g2llsnh7m</Fingerprint>
-      <Integrity>oNQO011rAt4artFJi/KduTcwlfoM8S8ddgF4IuxzPQs=</Integrity>
+      <Fingerprint>4a0mxodb4t</Fingerprint>
+      <Integrity>FKSaA+rW5C6hyjIwLbgPZul30i9xHBVDOOktvSZpq6Q=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\facilities\default-playground.jpg'))</OriginalItemSpec>
@@ -264,8 +282,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>6bogwc8jnl</Fingerprint>
-      <Integrity>7hAua9eS86enNBuIwTjKxhIfit2tRsZHhIvv287nLG0=</Integrity>
+      <Fingerprint>g6dgmr56aw</Fingerprint>
+      <Integrity>SGe2GZ6+3FSgLQCuReRjk80NjyF1yDWvlZOEJjuN3w8=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\facilities\default-pool.jpg'))</OriginalItemSpec>
@@ -306,23 +324,23 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\logo\admin-logo.png'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\profile\default-profile.png'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\profile\deafult-profile.png'))">
       <SourceType>Package</SourceType>
       <SourceId>SubdivisionWebsite</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/SubdivisionWebsite</BasePath>
-      <RelativePath>images/profile/default-profile.png</RelativePath>
+      <RelativePath>images/profile/deafult-profile.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>a3nmxgqa3y</Fingerprint>
-      <Integrity>msBmgpy8TA3zRs7ESz840PZxgo/ilQozua4T11974RI=</Integrity>
+      <Fingerprint>b6fqu5m2ji</Fingerprint>
+      <Integrity>U8Gb857p4G8/wmR4iBxB/U9KRU7dhChJwH9hdyxUuKc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\profile\default-profile.png'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\profile\deafult-profile.png'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\default-profile.png'))">
       <SourceType>Package</SourceType>
@@ -1493,6 +1511,78 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\facilities\638770821785681688_COMMUNITY CENTER.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\facilities\638778498755510545_default-pool.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SubdivisionWebsite</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SubdivisionWebsite</BasePath>
+      <RelativePath>uploads/facilities/638778498755510545_default-pool.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>g6dgmr56aw</Fingerprint>
+      <Integrity>SGe2GZ6+3FSgLQCuReRjk80NjyF1yDWvlZOEJjuN3w8=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\facilities\638778498755510545_default-pool.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\facilities\638778501968235161_COMMUNITY CENTER.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SubdivisionWebsite</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SubdivisionWebsite</BasePath>
+      <RelativePath>uploads/facilities/638778501968235161_COMMUNITY CENTER.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>uuy9dqhd5w</Fingerprint>
+      <Integrity>SsI4Wcd6LZjP+9LTdcO4kDEKtykTISUGB2bHX5wd5Ko=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\facilities\638778501968235161_COMMUNITY CENTER.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\facilities\638778503227092582_default-playground.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SubdivisionWebsite</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SubdivisionWebsite</BasePath>
+      <RelativePath>uploads/facilities/638778503227092582_default-playground.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>4a0mxodb4t</Fingerprint>
+      <Integrity>FKSaA+rW5C6hyjIwLbgPZul30i9xHBVDOOktvSZpq6Q=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\facilities\638778503227092582_default-playground.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\facilities\638778504241674444_default-gym.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SubdivisionWebsite</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SubdivisionWebsite</BasePath>
+      <RelativePath>uploads/facilities/638778504241674444_default-gym.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>qu4xi52ykk</Fingerprint>
+      <Integrity>0rxALgBhyS0VzHpBRF1VgMCCXby0iIZAk4j7B/Xau2I=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\facilities\638778504241674444_default-gym.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\profiles\a9bf1126-f3d4-4d88-a519-9d788dd3bd80_638772435445227960.jpg'))">
       <SourceType>Package</SourceType>

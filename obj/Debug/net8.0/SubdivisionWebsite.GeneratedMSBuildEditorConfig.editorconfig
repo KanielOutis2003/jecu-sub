@@ -140,8 +140,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Facility/Debug.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlcRGVidWcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Facility/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Facility/DiagnoseStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlcRGlhZ25vc2VTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Facility/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Facility/Index.cshtml]
@@ -182,6 +194,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Home/AboutUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dFVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Home/AdminDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkRhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jecu2/Desktop/SUB/jecu-sub/Views/Home/Announcements.cshtml]

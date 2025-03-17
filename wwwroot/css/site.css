@@ -767,3 +767,10 @@ body {
   background-color: rgba(194, 202, 208, 0.2);
   color: #5a6268;
 }
+
+/* Fix for admin profile image size */
+.img-profile.rounded-circle {
+    max-width: 32px;
+    height: auto;
+    object-fit: cover;
+}

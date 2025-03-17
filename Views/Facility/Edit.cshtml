@@ -1,7 +1,7 @@
 @model SubdivisionWebsite.Models.Facility
 
 @{
-    ViewData["Title"] = "Create Facility";
+    ViewData["Title"] = "Edit Facility";
 }
 
 <div class="container py-4">
@@ -9,8 +9,8 @@
         <div class="col-md-8">
             <div class="card shadow border-0 rounded-lg">
                 <div class="card-header bg-gradient-primary text-white text-center py-4">
-                    <h3 class="mb-0 fw-bold">Create New Facility</h3>
-                    <p class="small mb-0">Add a new facility to the subdivision</p>
+                    <h3 class="mb-0 fw-bold">Edit Facility</h3>
+                    <p class="small mb-0">Update facility information</p>
                 </div>
                 <div class="card-body p-4">
                     @if (TempData["ErrorMessage"] != null)
@@ -21,7 +21,10 @@
                         </div>
                     }
                     
-                    <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="ImageUrl" />
+                        
                         @if (!ViewData.ModelState.IsValid)
                         {
                             <div class="alert alert-danger">
@@ -46,15 +49,9 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input asp-for="Name" class="form-control" placeholder="Enter facility name" list="facilityTypesList" required />
+                                    <input asp-for="Name" class="form-control" placeholder="Enter facility name" required />
                                     <label asp-for="Name">Facility Name <span class="text-danger">*</span></label>
                                     <span asp-validation-for="Name" class="text-danger"></span>
-                                    <datalist id="facilityTypesList">
-                                        @foreach (var type in ViewBag.FacilityTypes)
-                                        {
-                                            <option value="@type">@type</option>
-                                        }
-                                    </datalist>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -75,7 +72,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input asp-for="Capacity" class="form-control" placeholder="Enter capacity" type="number" min="1" value="50" />
+                                    <input asp-for="Capacity" class="form-control" placeholder="Enter capacity" type="number" min="1" />
                                     <label asp-for="Capacity">Capacity (people)</label>
                                     <span asp-validation-for="Capacity" class="text-danger"></span>
                                     <small class="form-text text-muted">Maximum number of people allowed</small>
@@ -94,7 +91,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input asp-for="OpeningTime" class="form-control" type="time" value="08:00" />
+                                    <input asp-for="OpeningTime" class="form-control" type="time" />
                                     <label asp-for="OpeningTime">Opening Time</label>
                                     <span asp-validation-for="OpeningTime" class="text-danger"></span>
                                     <small class="form-text text-muted">When the facility opens (e.g., 08:00)</small>
@@ -102,7 +99,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input asp-for="ClosingTime" class="form-control" type="time" value="22:00" />
+                                    <input asp-for="ClosingTime" class="form-control" type="time" />
                                     <label asp-for="ClosingTime">Closing Time</label>
                                     <span asp-validation-for="ClosingTime" class="text-danger"></span>
                                     <small class="form-text text-muted">When the facility closes (e.g., 22:00)</small>
@@ -113,14 +110,24 @@
                         <div class="mb-3">
                             <label for="facilityImage" class="form-label">Facility Image</label>
                             <input type="file" class="form-control" id="facilityImage" name="facilityImage" accept="image/*" />
-                            <small class="form-text text-muted">Upload an image of the facility (optional, max 5MB, .jpg, .jpeg, .png, .gif)</small>
+                            <small class="form-text text-muted">Upload a new image (optional, max 5MB, .jpg, .jpeg, .png, .gif)</small>
+                            
+                            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                            {
+                                <div class="mt-2">
+                                    <p>Current image:</p>
+                                    <img src="@Model.ImageUrl" alt="Current Facility Image" class="img-thumbnail" style="max-height: 200px;" />
+                                </div>
+                            }
+                            
                             <div id="imagePreviewContainer" class="mt-2" style="display: none;">
+                                <p>New image preview:</p>
                                 <img id="imagePreview" src="#" alt="Image Preview" class="img-thumbnail" style="max-height: 200px;" />
                             </div>
                         </div>
                         
                         <div class="form-check form-switch mb-3">
-                            <input class="form-check-input" type="checkbox" asp-for="IsActive" checked />
+                            <input class="form-check-input" type="checkbox" asp-for="IsActive" />
                             <label class="form-check-label" asp-for="IsActive">Active (available for reservation)</label>
                         </div>
                         
@@ -132,12 +139,37 @@
                             <a asp-action="Index" class="btn btn-outline-secondary me-md-2">
                                 <i class="fas fa-arrow-left"></i> Back to List
                             </a>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save"></i> Create
+                            <button type="submit" class="btn btn-primary me-md-2">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                <i class="fas fa-trash"></i> Delete
                             </button>
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the facility <strong>"@Model.Name"</strong>?</p>
+                <p class="text-danger"><i class="fas fa-exclamation-triangle"></i> This action cannot be undone!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+                    <i class="fas fa-trash"></i> Delete Permanently
+                </a>
             </div>
         </div>
     </div>

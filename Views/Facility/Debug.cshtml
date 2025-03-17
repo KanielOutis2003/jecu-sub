@@ -1,0 +1,108 @@
+@model Dictionary<string, object>
+
+@{
+    ViewData["Title"] = "Database Debug";
+}
+
+<div class="container py-4">
+    <div class="card shadow border-0 rounded-lg">
+        <div class="card-header bg-warning text-dark">
+            <h3 class="mb-0">Database Debug Information</h3>
+            <p class="small mb-0">This page helps diagnose database connection and schema issues</p>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-3">Database Connection</h4>
+            
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Database</td>
+                            <td>@Model["Database"]</td>
+                        </tr>
+                        <tr>
+                            <td>Data Source</td>
+                            <td>@Model["DataSource"]</td>
+                        </tr>
+                        <tr>
+                            <td>Connection State</td>
+                            <td>@Model["ConnectionState"]</td>
+                        </tr>
+                        <tr>
+                            <td>Can Connect</td>
+                            <td>
+                                @if ((bool)Model["CanConnect"])
+                                {
+                                    <span class="badge bg-success">Yes</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">No</span>
+                                    <p class="text-danger mt-1">@Model["ConnectionError"]</p>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h4 class="mb-3 mt-4">Facility Table Information</h4>
+            
+            @if (Model.ContainsKey("FacilityTableError"))
+            {
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle me-2"></i> Error accessing Facility table:
+                    <p>@Model["FacilityTableError"]</p>
+                </div>
+            }
+            else
+            {
+                <div class="mb-3">
+                    <p>Total Facilities: <strong>@Model["FacilityCount"]</strong></p>
+                </div>
+                
+                <h5>Facility Properties</h5>
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Property Name</th>
+                                <th>Type</th>
+                                <th>Sample Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var property in (List<Dictionary<string, string>>)Model["FacilityProperties"])
+                            {
+                                <tr>
+                                    <td>@property["Name"]</td>
+                                    <td><code>@property["Type"]</code></td>
+                                    <td>@property["Value"]</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            
+            <div class="mt-4">
+                <a asp-action="DiagnoseStorage" class="btn btn-info me-2">
+                    <i class="fas fa-hdd"></i> Storage Diagnostics
+                </a>
+                <a asp-action="Create" class="btn btn-outline-primary me-2">
+                    <i class="fas fa-plus"></i> Try Create Facility
+                </a>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Facilities
+                </a>
+            </div>
+        </div>
+    </div>
+</div> 

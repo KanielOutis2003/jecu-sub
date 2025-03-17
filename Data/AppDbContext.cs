@@ -23,6 +23,48 @@ namespace SubdivisionWebsite.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            // Configure identity tables for MySQL
+            builder.Entity<ApplicationUser>(entity =>
+            {
+                entity.Property(e => e.Id).HasMaxLength(85);
+            });
+            
+            builder.Entity<Microsoft.AspNetCore.Identity.IdentityRole>(entity =>
+            {
+                entity.Property(e => e.Id).HasMaxLength(85);
+                entity.Property(e => e.NormalizedName).HasMaxLength(85);
+            });
+            
+            builder.Entity<Microsoft.AspNetCore.Identity.IdentityUserLogin<string>>(entity =>
+            {
+                entity.Property(e => e.LoginProvider).HasMaxLength(85);
+                entity.Property(e => e.ProviderKey).HasMaxLength(85);
+                entity.Property(e => e.UserId).HasMaxLength(85);
+            });
+            
+            builder.Entity<Microsoft.AspNetCore.Identity.IdentityUserRole<string>>(entity =>
+            {
+                entity.Property(e => e.UserId).HasMaxLength(85);
+                entity.Property(e => e.RoleId).HasMaxLength(85);
+            });
+            
+            builder.Entity<Microsoft.AspNetCore.Identity.IdentityUserToken<string>>(entity =>
+            {
+                entity.Property(e => e.UserId).HasMaxLength(85);
+                entity.Property(e => e.LoginProvider).HasMaxLength(85);
+                entity.Property(e => e.Name).HasMaxLength(85);
+            });
+            
+            builder.Entity<Microsoft.AspNetCore.Identity.IdentityUserClaim<string>>(entity =>
+            {
+                entity.Property(e => e.UserId).HasMaxLength(85);
+            });
+            
+            builder.Entity<Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>>(entity =>
+            {
+                entity.Property(e => e.RoleId).HasMaxLength(85);
+            });
+
             base.OnModelCreating(builder);
 
             // Explicitly tell EF Core about these types
@@ -92,6 +134,17 @@ namespace SubdivisionWebsite.Data
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.Description).IsRequired();
+                entity.Property(e => e.Location).IsRequired();
+                entity.Property(e => e.Capacity).HasDefaultValue(50);
+                entity.Property(e => e.IsActive).HasDefaultValue(true);
+                entity.Property(e => e.OpeningTime).HasDefaultValue(new TimeSpan(8, 0, 0)); // 8:00 AM
+                entity.Property(e => e.ClosingTime).HasDefaultValue(new TimeSpan(22, 0, 0)); // 10:00 PM
+                
+                // Configure relationships
+                entity.HasMany(f => f.Reservations)
+                    .WithOne(r => r.Facility)
+                    .HasForeignKey(r => r.FacilityId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             // Configure Event entity

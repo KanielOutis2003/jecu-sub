@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite(connectionString));
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 // Add Identity services
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -75,12 +75,34 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     try
     {
+        // Ensure default directories exist
+        var webHostEnvironment = services.GetRequiredService<IWebHostEnvironment>();
+        var uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "uploads");
+        var facilitiesFolder = Path.Combine(uploadsFolder, "facilities");
+        var imagesFolder = Path.Combine(webHostEnvironment.WebRootPath, "images", "facilities");
+        
+        if (!Directory.Exists(uploadsFolder))
+            Directory.CreateDirectory(uploadsFolder);
+            
+        if (!Directory.Exists(facilitiesFolder))
+            Directory.CreateDirectory(facilitiesFolder);
+            
+        if (!Directory.Exists(imagesFolder))
+            Directory.CreateDirectory(imagesFolder);
+            
+        // Create default facility images if they don't exist
+        var defaultImagePath = Path.Combine(imagesFolder, "default-facility.jpg");
+        if (!File.Exists(defaultImagePath))
+        {
+            using var fs = File.Create(defaultImagePath);
+        }
+        
         await DbInitializer.Initialize(services);
     }
     catch (Exception ex)
     {
         var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred while seeding the database.");
+        logger.LogError(ex, "An error occurred while seeding the database or initializing directories.");
     }
 }
 

@@ -9,13 +9,13 @@ namespace SubdivisionWebsite.Models
         public int Id { get; set; }
 
         [Required]
-        public required string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required]
-        public required string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         [Required]
-        public required string Location { get; set; }
+        public string Location { get; set; } = string.Empty;
 
         public int Capacity { get; set; }
 
